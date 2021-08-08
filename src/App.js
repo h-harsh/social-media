@@ -1,56 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import "./App.css";
+import React, {useEffect}  from "react";
+import { Route, Routes } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { setData } from "./features/Auth/authSlice";
+import { getLocalStorage, setupAuthHeaderForServiceCalls } from "./features/Auth/util";
+import { Login, SignUp, Home, Timeline, PrivateRoute, Followers, Following, AllUsers, AccountManagement, Notifications, TimelineSelf } from "./Pages/index";
+import { NavBar } from "./Components/Nav Bar/navBar";
 
 function App() {
+  const state = useSelector((state) => state.userData)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+      dispatch(setData(getLocalStorage()))
+      setupAuthHeaderForServiceCalls(state.token)
+  }, [state.token, dispatch])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
+      <div>
+        <NavBar/>
+      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+
+        <PrivateRoute path="/timeline" element={<TimelineSelf />} />
+        <PrivateRoute path="/timeline/:userId" element={<Timeline />} />
+
+        
+        <PrivateRoute path="/followers" element={<Followers />} />
+        <PrivateRoute path="/following" element={<Following />} />
+        <PrivateRoute path="/allUsers" element={<AllUsers />} />
+        <PrivateRoute path="/accountDetails" element={<AccountManagement />} />
+        <PrivateRoute path="/notifications" element={<Notifications />} />
+      </Routes>
     </div>
   );
 }

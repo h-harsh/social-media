@@ -1,8 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import authReducer from '../features/Auth/authSlice'
+import postsReducer from '../features/Posts/postsSlice'
+import friendsReducer from '../features/Follow-UnFollow/friendsSlice'
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    userData: authReducer,
+    postsData: postsReducer,
+    friendsData: friendsReducer
   },
 });
