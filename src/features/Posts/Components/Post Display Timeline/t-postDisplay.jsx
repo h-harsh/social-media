@@ -16,7 +16,7 @@ export const TPostDisplay = ({ userId }) => {
 
   return (
     <>
-      <h1>map on postcard</h1>
+    <h1>All Posts</h1>
       {postsState.status === "success" && postsState.error === null ? (
         postsState.posts.map((post) => {
           return <PostCard post={post} />;

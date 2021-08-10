@@ -1,16 +1,28 @@
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { LoginBox } from '../features/Auth/Login/loginBox'
+import { useEffect } from 'react'
 
 
 export const Login = () => {
-    const state = useSelector((state) => state.userData)
-console.log(state)
+    const token = useSelector((state) => state.userData.token)
+    const navigate = useNavigate()
+    
 
+useEffect(() => {
+  if(!token){
+      navigate("/login")
+  }else {
+      navigate("/")
+  }
+}, [token, navigate]) 
     return(
-        state.token  ? (
-            <h1>Hii {state?.currentUser?.fullName}</h1>
+        token  ? (
+            null 
         ):(
+            <div className="to-center login-outer" >
             <LoginBox/>
+            </div>
         )
     )
 }

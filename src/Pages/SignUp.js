@@ -11,13 +11,15 @@ export const SignUp = () => {
         if(state.token){
             navigate("/")
         }
-    }, [state])
+    }, [state, navigate])
 
     return(
         state.token  ? (
             <h1>Hii {state?.currentUser?.fullName} You are alreday looed in</h1>
         ):(
+            <div className="to-center login-outer" >
             <SignUpBox/>
+            </div>
         )
     )
 }

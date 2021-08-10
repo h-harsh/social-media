@@ -2,8 +2,8 @@ import { FollowingList } from "../features/Follow-UnFollow/FollowingList/followi
 
 export const Following = () => {
     return(
-        <>
+        <div className="to-center">
         <FollowingList/>
-        </>
+        </div>
     )   
 }

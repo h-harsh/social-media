@@ -11,7 +11,7 @@ export const LoginBox = () => {
 
 
   return (
-    <div className="login-box">
+    <div className="login-box" >
       <input
         className="login-item"
         placeholder="Username"

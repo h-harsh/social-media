@@ -14,6 +14,7 @@ export const userLogin = createAsyncThunk(
             if(response.status === 200){
                 setupAuthHeaderForServiceCalls(response.data.token);
                 setLocalStorage(response.data.user, response.data.token);
+
             }
             return fulfillWithValue(response.data)
         }catch(error){

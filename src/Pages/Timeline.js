@@ -9,11 +9,10 @@ export const Timeline = () => {
 
   return (
     <>
-      <p>Login Status: {state.loginStatus}</p>
-      <div style={{ border: "1px solid black", padding: "1.5rem" }}>
+      <div>
         <ProfileBox userId={userId} />
       </div>
-      <div style={{ border: "1px solid black", padding: "1.5rem" }}>
+      <div className="to-center">
         <TPostDisplay userId={userId} />
       </div>
     </>

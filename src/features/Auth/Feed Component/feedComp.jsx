@@ -15,9 +15,7 @@ export const FeedComp = () => {
   }, [dispatch]);
 
   return (
-    <>
-      <h1>Map kardo new route p ebas </h1>
-
+    <div id="hello">
       {state.userFeed === null ? (
         <h1>Error</h1>
       ) : (
@@ -26,6 +24,6 @@ export const FeedComp = () => {
         })
       )}
 
-    </>
+    </div>
   );
 };

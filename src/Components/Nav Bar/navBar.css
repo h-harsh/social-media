@@ -1,0 +1,52 @@
+.navi-bar {
+  display: flex;
+  width: 100%;
+  height: 5rem;
+  justify-content: space-between;
+  background-color: white;
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  box-shadow: 1px 2px 1px 0px whitesmoke;
+  align-items: center;
+}
+
+.navi-bar-logo,
+.navi-bar-search-bar {
+  font-size: 2rem;
+  font-weight: 500;
+  padding: 0.5rem 1.3rem;
+}
+
+.navi-bar-loggedin-menu, .navi-bar-loggedout-menu {
+  list-style: none;
+  display: flex;
+  margin: auto;
+}
+.navi-bar-loggedin-menu li {
+  font-size: 2rem;
+  padding: 0.5rem 1.3rem;
+}
+.navi-bar-loggedin-menu a {
+  color: black;
+}
+
+.navi-bar-loggedout-menu {
+    float: right;
+    margin-right: 2rem;
+}
+.navi-bar-loggedout-menu li {
+    margin-right: 2rem;
+}
+
+
+
+.logout {
+  /* padding: 0.5rem 1rem; */
+  display: inline;
+  font-size: 1.5rem;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  margin-right: 1.5rem;
+}

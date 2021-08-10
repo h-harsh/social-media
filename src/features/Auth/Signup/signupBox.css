@@ -6,6 +6,7 @@
     margin: 1rem;
     border-radius: 10%;
     box-shadow: 6px 6px 8px 5px grey;
+    background-color: white;
 }
 
 .signup-item{
@@ -20,6 +21,7 @@
     border-top: none;
     border-left: none;
     border-right: none;
+    outline: none;
 }
 
 @media screen and (max-width:450px){

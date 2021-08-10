@@ -1,0 +1,34 @@
+.profile-card{
+    border-bottom: 1px solid gray;
+    text-align: center;
+}
+.profile-card-image .cover{
+    background: gray;
+    width: 100%;
+    height: 20rem;
+}
+.profile-card-image .pic{
+    margin-top: -15%;
+}
+.profile-card-image .avatar{
+    border: 4px solid white;
+}
+
+.profile-card-details h1{
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0.2em;
+}
+.profile-card-details-p3{
+    display: flex;
+}
+.p3-p{
+    padding: 0.7rem;
+    font-size: 1.2rem;
+}
+
+.profile-card-p2{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2rem 2rem 2rem;
+}
