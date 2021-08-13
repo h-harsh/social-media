@@ -25,7 +25,7 @@ const navigate = useNavigate()
           </div>
           {
               token ? (
-                <div className="navi-bar-search-bar">Searchbar</div>
+                <div className="navi-bar-search-bar">.</div>
               ):(null)
           }
           {

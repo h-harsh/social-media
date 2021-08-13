@@ -43,7 +43,7 @@ export const SignUpBox = () => {
         <input
         className="signup-item"
         placeholder="Password"
-          type="text"
+          type="password"
           onChange={(event) => setPassword(event.target.value)}
         />
     
