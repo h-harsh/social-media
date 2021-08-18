@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadAllUsers } from "../friendsSlice";
 import { UserListCard, UserListCardSmall } from "../User List Card/userListCard";
-import { setupAuthHeaderForServiceCalls } from "../../Auth/util";
+import { setupAuthHeaderForServiceCalls } from "../../Auth User/util";
 
 export const AllUsersList = () => {
   const allUsersData = useSelector((state) => state.friendsData.allUsers);

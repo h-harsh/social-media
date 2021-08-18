@@ -1,8 +1,8 @@
 import './profileBox.css'
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setupAuthHeaderForServiceCalls } from "../../../Auth/util";
-import { loadOtherUser } from "../../postsSlice";
+import { setupAuthHeaderForServiceCalls } from '../../Auth User/util'; 
+import { loadOtherUser } from "../postsSlice";
 import {Avatar} from 'antd'
 import {UserOutlined } from '@ant-design/icons'
 

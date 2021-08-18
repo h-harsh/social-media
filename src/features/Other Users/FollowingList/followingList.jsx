@@ -2,9 +2,9 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadFriends } from "../friendsSlice";
 import { UserListCard } from "../User List Card/userListCard";
-import { setupAuthHeaderForServiceCalls } from "../../Auth/util";
+import { setupAuthHeaderForServiceCalls } from "../../Auth User/util";
 
-export const FollowersList = () => {
+export const FollowingList = () => {
   const friendsState = useSelector((state) => state.friendsData);
   const state = useSelector((state) => state.userData);
   setupAuthHeaderForServiceCalls(state.token);
@@ -16,9 +16,9 @@ export const FollowersList = () => {
 
   return (
     <>
-      <h3>Map on all Followers</h3>
-      {friendsState.followers !== null
-        ? friendsState.followers.map((user) => {
+      <h3>Map on all Following</h3>
+      {friendsState.following !== null
+        ? friendsState.following.map((user) => {
             return <UserListCard user={user} />;
           })
         : null}

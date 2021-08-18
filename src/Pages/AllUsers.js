@@ -1,4 +1,4 @@
-import { AllUsersList } from "../features/Follow-UnFollow/All users list/allUsersList"
+import { AllUsersList } from "../features/Other Users/All users list/allUsersList"
 
 export const AllUsers = () => {
     return(

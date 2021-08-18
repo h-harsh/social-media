@@ -1,7 +1,7 @@
 import "./createPost.css";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addPost } from "../../postsSlice";
+import { addPost } from "../postsSlice";
 import { UserOutlined } from "@ant-design/icons";
 import { Avatar, Button } from "antd";
 

@@ -1,4 +1,4 @@
-import { FollowingList } from "../features/Follow-UnFollow/FollowingList/followingList"
+import { FollowingList } from "../features/Other Users/FollowingList/followingList"
 
 export const Following = () => {
     return(

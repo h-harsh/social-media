@@ -1,4 +1,4 @@
-import { EditDetails } from "../features/Auth/Edit Details/editDetails"
+import { EditDetails } from "../features/Auth User/Edit Details/editDetails"
 
 export const AccountManagement = () => {
     return(

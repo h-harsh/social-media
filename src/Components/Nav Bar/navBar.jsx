@@ -1,7 +1,7 @@
 import './navBar.css'
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { clearData } from "../../features/Auth/authSlice";
+import { clearData } from "../../features/Auth User/authSlice";
 import { useEffect, useState } from "react";
 import {Button} from 'antd'
 

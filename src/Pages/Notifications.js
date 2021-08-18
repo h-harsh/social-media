@@ -1,4 +1,4 @@
-import { NotificationComp } from "../features/Auth/Notifications Comp/notifComp"
+import { NotificationComp } from "../features/Auth User/Notifications Comp/notifComp"
 
 export const Notifications = () => {
     return(

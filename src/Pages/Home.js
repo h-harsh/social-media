@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { FeedComp } from "../features/Auth/Feed Component/feedComp"
+import { FeedComp } from "../features/Auth User/Feed Component/feedComp"
 
 export const Home = () => {
   const token = useSelector(state => state.userData.token)

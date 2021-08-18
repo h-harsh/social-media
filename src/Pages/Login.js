@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { LoginBox } from '../features/Auth/Login/loginBox'
+import { LoginBox } from '../features/Auth User/Login/loginBox'
 import { useEffect } from 'react'
 
 

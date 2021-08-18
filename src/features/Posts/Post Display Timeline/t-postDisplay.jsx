@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { PostCard } from "../../../../Components/Cards/Post Card/postCard";
-import { loadPosts } from "../../postsSlice";
-import { setupAuthHeaderForServiceCalls } from "../../../Auth/util";
+import { PostCard } from "../../../Components/Cards/Post Card/postCard";
+import { loadPosts } from "../postsSlice";
+import { setupAuthHeaderForServiceCalls } from "../../Auth User/util";
 
 export const TPostDisplay = ({ userId }) => {
   const postsState = useSelector((state) => state.postsData);

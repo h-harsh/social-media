@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import { ProfileBoxSelf } from "../features/Posts/Components/Profile Box/profileBox";
-import { CreatePost } from "../features/Posts/Components/Create Post/createPost";
-import { TPostDisplay } from "../features/Posts/Components/Post Display Timeline/t-postDisplay";
+import { ProfileBoxSelf } from "../features/Posts/Profile Box/profileBox";
+import { CreatePost } from "../features/Posts/Create Post/createPost";
+import { TPostDisplay } from "../features/Posts/Post Display Timeline/t-postDisplay";
 
 export const TimelineSelf = () => {
   const state = useSelector((state) => state.userData);
