@@ -1,7 +1,7 @@
 import "./userListCard.css";
 import { useDispatch, useSelector } from "react-redux";
-import { followFriend, unfollowFriend } from "../friendsSlice";
-import { loadAllUsers, loadFriends } from "../friendsSlice";
+import { followFriend, unfollowFriend } from "../otherUsersSlice";
+import { loadAllUsers, loadFriends } from "../otherUsersSlice";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Avatar, Button } from "antd";

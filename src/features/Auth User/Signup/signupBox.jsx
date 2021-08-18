@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { baseurl } from "../../../utils/baseurl";
-import { userLogin, userSignup } from "../authSlice";
+import { userLogin, userSignup } from "../authUserSlice";
 import './signupBox.css'
 
 export const SignUpBox = () => {

@@ -1,6 +1,6 @@
 import './notifComp.css'
 import { useDispatch, useSelector } from "react-redux";
-import { clearNotif } from "../authSlice";
+import { clearNotif } from "../authUserSlice";
 import {Button} from 'antd'
 
 export const NotificationComp = () => {

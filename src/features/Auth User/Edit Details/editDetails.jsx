@@ -1,7 +1,7 @@
 import './editDetails.css'
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
-import { userEdit } from "../authSlice";
+import { userEdit } from "../authUserSlice";
 import {Button} from 'antd'
 
 export const EditDetails = () => {

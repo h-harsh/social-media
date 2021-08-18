@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import "./loginBox.css";
-import { userLogin } from "../authSlice";
+import { userLogin } from "../authUserSlice";
 
 export const LoginBox = () => {
   const [userName, setUserName] = useState("");

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loadFriends } from "../friendsSlice";
+import { loadFriends } from "../otherUsersSlice";
 import { UserListCard } from "../User List Card/userListCard";
 import { setupAuthHeaderForServiceCalls } from "../../Auth User/util";
 

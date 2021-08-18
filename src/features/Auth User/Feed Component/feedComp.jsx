@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loadFeed } from "../authSlice";
+import { loadFeed } from "../authUserSlice";
 import { setupAuthHeaderForServiceCalls } from "../util";
 import { PostCard } from "../../../Components/Cards/Post Card/postCard";
 

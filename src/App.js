@@ -4,7 +4,7 @@ import 'antd/dist/antd.css';
 import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { setData } from "./features/Auth User/authSlice"; 
+import { setData } from "./features/Auth User/authUserSlice"; 
 import {
   getLocalStorage,
   setupAuthHeaderForServiceCalls,
