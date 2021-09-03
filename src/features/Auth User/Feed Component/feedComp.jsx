@@ -20,7 +20,7 @@ export const FeedComp = () => {
         <h1>Error</h1>
       ) : (
         state.userFeed.map((post) => {
-          return <PostCard post={post} />;
+          return <PostCard post={post} feed />;
         })
       )}
 

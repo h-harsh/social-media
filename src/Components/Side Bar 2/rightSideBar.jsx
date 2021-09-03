@@ -3,8 +3,8 @@ import './rightSideBar.css'
 
 export const RSideBar = () => {
     return(
-        <>
+        <div style={{position:'fixed', overflow:'scroll'}}>
         <AllUsersListSideBar/>
-        </>
+        </div>
     )
 }

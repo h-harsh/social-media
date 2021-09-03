@@ -3,7 +3,7 @@
 }
 .app-main-comp{
   display: grid;
-  grid-template-columns: 2fr 5fr 1.5fr;
+  grid-template-columns: 1.5fr 5fr 2.5fr;
   margin-top: 5rem;
   height: 100%;
 }

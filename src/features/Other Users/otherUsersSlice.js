@@ -50,6 +50,23 @@ async ({otherUserId}, { fulfillWithValue, rejectWithValue }) => {
       }
 }
 )
+const userDetails = {
+  userName: null,
+  fullname: null,
+  email: null,
+  bio: null,
+  dob: null,
+  gender: null,
+  profilePic: null    
+}
+
+const otherUsersInitialstate = {
+  userDetails:userDetails,
+  posts:null,
+  followers:null,
+  following:null,
+  allusers:null
+} 
 
 const friendsManagementSlice = createSlice({
     name:'friendsManagement',

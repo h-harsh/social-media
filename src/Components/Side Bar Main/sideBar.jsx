@@ -3,7 +3,7 @@ import './sideBar.css'
 
 export const SideBarMain = () => {
     return(
-        <>
+        <div style={{position:'fixed', overflow:'scroll'}}>
         <ul className="sideBar-comp">
             <li> <Link to="/">  <i class="fas fa-home"></i> Home </Link> </li>
             <li> <Link to="/timeline"> <i class="fas fa-stream"></i> Timeline </Link> </li>
@@ -13,6 +13,6 @@ export const SideBarMain = () => {
             <li> <Link to="/accountDetails"> <i class="fas fa-user-circle"></i> Account </Link> </li>
             <li> <Link to="/notifications"> <i class="fas fa-user-edit"></i> Notifications </Link> </li>
         </ul>
-        </>
+        </div>
     )
 }

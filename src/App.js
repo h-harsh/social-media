@@ -1,10 +1,9 @@
-
 import "./App.css";
-import 'antd/dist/antd.css';
+import "antd/dist/antd.css";
 import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { setData } from "./features/Auth User/authUserSlice"; 
+import { setData } from "./features/Auth User/authUserSlice";
 import {
   getLocalStorage,
   setupAuthHeaderForServiceCalls,
@@ -23,8 +22,8 @@ import {
   TimelineSelf,
 } from "./Pages/index";
 import { NavBar } from "./Components/Nav Bar/navBar";
-import {SideBarMain} from './Components/Side Bar Main/sideBar'
-import {RSideBar} from './Components/Side Bar 2/rightSideBar'
+import { SideBarMain } from "./Components/Side Bar Main/sideBar";
+import { RSideBar } from "./Components/Side Bar 2/rightSideBar";
 
 function App() {
   const state = useSelector((state) => state.userData);
@@ -43,9 +42,9 @@ function App() {
       {state.token ? (
         <div className="app-main-comp">
           <div>
-          <SideBarMain/>
-          </div>  
-          <div   >
+            <SideBarMain />
+          </div>
+          <div>
             <Routes>
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<SignUp />} />
@@ -55,22 +54,24 @@ function App() {
               <PrivateRoute path="/followers" element={<Followers />} />
               <PrivateRoute path="/following" element={<Following />} />
               <PrivateRoute path="/allUsers" element={<AllUsers />} />
-              <PrivateRoute path="/accountDetails" element={<AccountManagement />} />
+              <PrivateRoute
+                path="/accountDetails"
+                element={<AccountManagement />}
+              />
               <PrivateRoute path="/notifications" element={<Notifications />} />
             </Routes>
           </div>
           <div>
-            <RSideBar/>
+            <RSideBar />
           </div>
         </div>
-      ) : ( 
-      <div className="app-main-comp-loggedout">
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-        </Routes>
-      </div>
-        
+      ) : (
+        <div className="app-main-comp-loggedout">
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
+          </Routes>
+        </div>
       )}
     </div>
   );
