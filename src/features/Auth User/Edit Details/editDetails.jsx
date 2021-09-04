@@ -1,59 +1,130 @@
-import './editDetails.css'
-import { useState } from "react"
+import "./editDetails.css";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userEdit } from "../authUserSlice";
-import {Button} from 'antd'
+import { Button } from "antd";
+import axios from "axios";
+import { baseurl } from "../../../utils/baseurl";
 
 export const EditDetails = () => {
-    const user = useSelector(state => state.userData.currentUser)
-    const [updatedDetail, setUpdatedDetail] = useState({
-        fullName:user.fullName,
-        userName:user.userName,
-        email:user.email,
-        bio:user.bio,
-        gender:user.gender,
-        dob:user.dob
-    })
-    const dispatch = useDispatch()
-   console.log(user)
+  const user = useSelector((state) => state.userData.currentUser);
+  const [updatedDetail, setUpdatedDetail] = useState({
+    fullName: user.fullName,
+    userName: user.userName,
+    email: user.email,
+    bio: user.bio,
+    gender: user.gender,
+    dob: user.dob,
+    profilePicture: user.profilePicture,
+  });
+  const dispatch = useDispatch();
+  console.log(user);
+//   const baseurl = "https://imapgeupload2.harshporwal1.repl.co";
 
-    return(
-        <div className="acc-mang-outer">
-            <h1>Edit Account Details</h1>
-        <div className="acc-mang-p1">
-            <div className="innzer"  >
-           <p> FullName</p> 
-            <input type="text" placeholder={updatedDetail.fullName} 
-            onChange={(e) => setUpdatedDetail({...updatedDetail, fullName:e.target.value})} />
-            </div>
-            <div className="innzer" >
-           <p> Username</p> 
-            <input type="text" placeholder={updatedDetail.userName}
-            onChange={(e) => setUpdatedDetail({...updatedDetail, userName:e.target.value})} />
-            </div>
-            <div className="innzer" >
-           <p> Email</p> 
-            <input type="text" placeholder={updatedDetail.email}
-            onChange={(e) => setUpdatedDetail({...updatedDetail, email:e.target.value})} />
-            </div>
-            <div className="innzer" >
-           <p> Bio</p> 
-            <input type="text" placeholder={updatedDetail.bio}
-            onChange={(e) => setUpdatedDetail({...updatedDetail, bio:e.target.value})} />
-            </div>
-            <div className="innzer" >
-           <p> Gender</p> 
-            <input type="text" placeholder={updatedDetail.gender}
-            onChange={(e) => setUpdatedDetail({...updatedDetail, gender:e.target.value})} />
-            </div>
-            <div className="innzer" >
-           <p> DOB</p> 
-            <input type="text" placeholder={updatedDetail.dob}
-            onChange={(e) => setUpdatedDetail({...updatedDetail, dob:e.target.value})} />
-            </div>
-        
+  const [file, setFile] = useState(null);
+
+  const onFormSubmit = async (e) => {
+    // e.preventDefault();
+    try {
+      const formData = new FormData();
+      formData.append("profile-image", file);
+      const response = await axios.post(`${baseurl}/user/edit/profile`, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+      console.log(response.data);
+      document.getElementById("profile-file").value = "";
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const onInputChange = (e) => {
+    setFile(e.target.files[0]);
+  };
+
+  return (
+    <div className="acc-mang-outer">
+      <h1>Edit Account Details</h1>
+      <div>
+        <p>Upload profile picture</p>
+        <input
+          type="file"
+          name="profile-image"
+          id="profile-file"
+          onChange={onInputChange}
+        />
+      </div>
+      <div className="acc-mang-p1">
+        <div className="innzer">
+          <p> FullName</p>
+          <input
+            type="text"
+            placeholder={updatedDetail.fullName}
+            onChange={(e) =>
+              setUpdatedDetail({ ...updatedDetail, fullName: e.target.value })
+            }
+          />
         </div>
-        <Button size="large" onClick={() => dispatch(userEdit(updatedDetail))} >Save Changes</Button>
+        <div className="innzer">
+          <p> Username</p>
+          <input
+            type="text"
+            placeholder={updatedDetail.userName}
+            onChange={(e) =>
+              setUpdatedDetail({ ...updatedDetail, userName: e.target.value })
+            }
+          />
         </div>
-    )
-}
+        <div className="innzer">
+          <p> Email</p>
+          <input
+            type="text"
+            placeholder={updatedDetail.email}
+            onChange={(e) =>
+              setUpdatedDetail({ ...updatedDetail, email: e.target.value })
+            }
+          />
+        </div>
+        <div className="innzer">
+          <p> Bio</p>
+          <input
+            type="text"
+            placeholder={updatedDetail.bio}
+            onChange={(e) =>
+              setUpdatedDetail({ ...updatedDetail, bio: e.target.value })
+            }
+          />
+        </div>
+        <div className="innzer">
+          <p> Gender</p>
+          <input
+            type="text"
+            placeholder={updatedDetail.gender}
+            onChange={(e) =>
+              setUpdatedDetail({ ...updatedDetail, gender: e.target.value })
+            }
+          />
+        </div>
+        <div className="innzer">
+          <p> DOB</p>
+          <input
+            type="text"
+            placeholder={updatedDetail.dob}
+            onChange={(e) =>
+              setUpdatedDetail({ ...updatedDetail, dob: e.target.value })
+            }
+          />
+        </div>
+      </div>
+      <Button
+        size="large"
+        onClick={() => {
+          dispatch(userEdit(updatedDetail));
+          onFormSubmit();
+        }}
+      >
+        Save Changes
+      </Button>
+    </div>
+  );
+};
