@@ -17,10 +17,31 @@ export const loadPosts = createAsyncThunk(
 );
 export const addPost = createAsyncThunk(
   "posts/add",
-  async ({ text }, { fulfillWithValue, rejectWithValue }) => {
+  async ({ formData, text }, { fulfillWithValue, rejectWithValue }) => {
     try {
-      const response = await axios.post(`${baseurl}/post/new`, { text });
-      // console.log(response.data);
+      //console.log("1",{formData,text}) //{formData: FormData, text: 'Hello trials'}
+      console.log("2", formData, text);
+      const response = await axios.post(
+        `${baseurl}/post/new/${text}`,
+        formData,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
+      console.log(response.data);
+      return fulfillWithValue(response.data.newPost);
+    } catch (error) {
+      console.log(error.response.data);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+export const deletePost = createAsyncThunk(
+  "posts/delete",
+  async (postId, { fulfillWithValue, rejectWithValue }) => {
+    try {
+      const response = await axios.delete(`${baseurl}/post/delete/${postId}`);
+      console.log(response.data);
       return fulfillWithValue(response.data.newPost);
     } catch (error) {
       console.log(error.response.data);
@@ -43,9 +64,11 @@ export const likePost = createAsyncThunk(
 );
 export const commentPost = createAsyncThunk(
   "posts/comment",
-  async ({postId, comment}, { fulfillWithValue, rejectWithValue }) => {
+  async ({ postId, comment }, { fulfillWithValue, rejectWithValue }) => {
     try {
-      const response = await axios.post(`${baseurl}/post/comment/${postId}`, {comment});
+      const response = await axios.post(`${baseurl}/post/comment/${postId}`, {
+        comment,
+      });
       // console.log(response.data);
       return fulfillWithValue(response.data);
     } catch (error) {
@@ -76,7 +99,7 @@ const postsSlice = createSlice({
     posts: null,
     status: "idle",
     error: null,
-    otherUser:null,
+    otherUser: null,
     // tempComment:null
   },
   reducers: {},
@@ -89,6 +112,13 @@ const postsSlice = createSlice({
     [addPost.fulfilled]: (state, action) => {
       state.posts.push(action.payload);
     },
+    [deletePost.fulfilled]: (state, action) => {
+      const postIndex = state.posts.findIndex(
+        (post) => post._id === action.payload.postId
+      );
+      state.posts.splice(postIndex, 1)
+
+    },
     [likePost.fulfilled]: (state, action) => {
       const postIndex = state.posts.findIndex(
         (post) => post._id === action.payload.postId
@@ -96,17 +126,17 @@ const postsSlice = createSlice({
 
       state.posts[postIndex].likes = action.payload.data;
     },
-    [commentPost.fulfilled] : (state, action) => {
-        const postIndex = state.posts.findIndex(
-            (post) => post._id === action.payload.postId
-          );
-    
-          state.posts[postIndex].comments = action.payload.commentsData;
-        // state.tempComment = action.payload.commentsData
+    [commentPost.fulfilled]: (state, action) => {
+      const postIndex = state.posts.findIndex(
+        (post) => post._id === action.payload.postId
+      );
+
+      state.posts[postIndex].comments = action.payload.commentsData;
+      // state.tempComment = action.payload.commentsData
     },
     [loadOtherUser.fulfilled]: (state, action) => {
-      state.otherUser = action.payload
-    }
+      state.otherUser = action.payload;
+    },
   },
 });
 

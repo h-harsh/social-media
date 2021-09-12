@@ -9,8 +9,17 @@
 /* Post author details */
 .post-author-details{
     display: flex;
+    justify-content: space-between;
     padding: 0.8rem;
     align-items: center;
+}
+.post-author-details-inner{
+    display: flex;
+}
+.post-del-btn{
+    cursor: pointer;
+    background: transparent;
+    border: none;
 }
 .post-author-details-p2{
     margin-left: 0.5rem;

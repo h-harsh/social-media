@@ -1,13 +1,17 @@
 import "./editDetails.css";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { userEdit } from "../authUserSlice";
+import { userEdit, userEditProfilePicture } from "../authUserSlice";
 import { Button } from "antd";
+import { Avatar } from "antd";
 import axios from "axios";
 import { baseurl } from "../../../utils/baseurl";
+import { UserOutlined } from "@ant-design/icons";
+import { setupAuthHeaderForServiceCalls } from "../util";
 
 export const EditDetails = () => {
   const user = useSelector((state) => state.userData.currentUser);
+  const token = useSelector((state) => state.userData.token);
   const [updatedDetail, setUpdatedDetail] = useState({
     fullName: user.fullName,
     userName: user.userName,
@@ -18,41 +22,51 @@ export const EditDetails = () => {
     profilePicture: user.profilePicture,
   });
   const dispatch = useDispatch();
-  console.log(user);
-//   const baseurl = "https://imapgeupload2.harshporwal1.repl.co";
 
   const [file, setFile] = useState(null);
+  const [displayFile, setDisplayFile] = useState(null);
 
-  const onFormSubmit = async (e) => {
-    // e.preventDefault();
-    try {
-      const formData = new FormData();
-      formData.append("profile-image", file);
-      const response = await axios.post(`${baseurl}/user/edit/profile`, formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
-      console.log(response.data);
-      document.getElementById("profile-file").value = "";
-    } catch (error) {
-      console.log(error);
+  const onFormSubmit = async () => {
+    const formData = new FormData();
+    formData.append("profile-image", file);
+    if (file) {
+      setupAuthHeaderForServiceCalls(token)
+      dispatch(userEditProfilePicture(formData));
     }
   };
 
   const onInputChange = (e) => {
     setFile(e.target.files[0]);
+    if (e.target.files && e.target.files[0]) {
+      setDisplayFile(URL.createObjectURL(e.target.files[0]));
+    }
   };
-
+const profilePicture = <img src={`${baseurl}/${user.profilePicture}`} alt="Error" /> 
+const defaultProfilePicture = (
+<div className="pic">
+<Avatar
+  className="avatar"
+  size={200}
+  icon={<UserOutlined />}
+/>
+</div>
+)
+const uploadedProfilePicture = <img  src={displayFile} alt="Error" />
   return (
     <div className="acc-mang-outer">
       <h1>Edit Account Details</h1>
       <div>
-        <p>Upload profile picture</p>
-        <input
-          type="file"
-          name="profile-image"
-          id="profile-file"
-          onChange={onInputChange}
-        />
+        <div>
+          <div className="pic">
+            {user.profilePicture ? (displayFile ? (uploadedProfilePicture) : (profilePicture)): defaultProfilePicture }
+          </div>
+          <input
+            type="file"
+            name="profile-image"
+            id="profile-file"
+            onChange={onInputChange}
+          />
+        </div>
       </div>
       <div className="acc-mang-p1">
         <div className="innzer">

@@ -67,6 +67,29 @@ export const userEdit = createAsyncThunk(
     }
   }
 );
+export const userEditProfilePicture = createAsyncThunk(
+  "auth/profilePicture",
+  async(formData, {fulfillWithValue, rejectWithValue}) => {
+    try{
+      const response = await axios.post(`${baseurl}/user/edit/profile`, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+      console.log("77 authUserSlice",response.data);
+      if(response.status === 200){
+        document.getElementById("profile-file").value = "";
+        clearLocalStorage();
+        setupAuthHeaderForServiceCalls(response.data.token);
+        setLocalStorage(response.data.user, response.data.token);
+      }
+      return fulfillWithValue(response.data);
+    }catch(error){
+      console.log(error.response)
+      return rejectWithValue(error.response.data);
+    }
+  }
+)
+
+
 export const clearNotif = createAsyncThunk(
   "auth/clearnotif",
   async (param, { fulfillWithValue, rejectWithValue }) => {
@@ -194,6 +217,15 @@ const authSlice = createSlice({
     },
 
     [userEdit.fulfilled]: (state, action) => {
+      state.signup = "idle";
+      state.currentUser = action.payload.user;
+      state.currentUser.userId = action.payload.user._id;
+
+      state.token = action.payload.token;
+      state.loginStatus = "loggedIn";
+    },
+    [userEditProfilePicture.fulfilled]: (state, action) => {
+      console.log("Photo fullfilledd")
       state.signup = "idle";
       state.currentUser = action.payload.user;
       state.currentUser.userId = action.payload.user._id;

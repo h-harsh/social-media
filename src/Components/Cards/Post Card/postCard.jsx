@@ -1,15 +1,20 @@
 import "./postCard.css";
 import { useState } from "react";
 import { useDispatch, useStore } from "react-redux";
-import { likePost } from "../../../features/Posts/postsSlice";
+import { deletePost, likePost } from "../../../features/Posts/postsSlice";
 import { commentPost } from "../../../features/Posts/postsSlice";
-import { likePostFromFeed, commentPostFromFeed } from "../../../features/Auth User/authUserSlice";
+import {
+  likePostFromFeed,
+  commentPostFromFeed,
+} from "../../../features/Auth User/authUserSlice";
 import { Avatar, Button } from "antd";
 import {
   ShareAltOutlined,
   CommentOutlined,
   LikeOutlined,
+  DeleteOutlined,
 } from "@ant-design/icons";
+import { baseurl } from "../../../utils/baseurl";
 
 export const PostCard = ({ post, feed }) => {
   const [comment, setComment] = useState("");
@@ -18,23 +23,31 @@ export const PostCard = ({ post, feed }) => {
   return (
     <div className="post-card">
       <div className="post-author-details">
-        <Avatar
-          size={40}
-          style={{ color: "#f56a00", backgroundColor: "#fde3cf" }}
-        >
-          A
-        </Avatar>
-        <div className="post-author-details-p2">
-          <h4>{post.authorName}</h4>
-          <p>{post.createdAt}</p>
+        <div className="post-author-details-inner">
+          <div>
+            <Avatar
+              size={40}
+              style={{ color: "#f56a00", backgroundColor: "#fde3cf" }}
+            >
+              A
+            </Avatar>
+          </div>
+
+          <div className="post-author-details-p2">
+            <h4>{post.authorName}</h4>
+            <p>{post.createdAt}</p>
+          </div>
         </div>
+        {!feed && <div >
+          <button onClick={() => dispatch(deletePost(post._id))} className="post-del-btn"><DeleteOutlined /></button>
+        </div>}
       </div>
 
       <div className="post-content">
         <p>{post.text}</p>
         <img
           className="post-content-img"
-          src="https://i.ytimg.com/vi/Wg0s1XCfISs/maxresdefault.jpg"
+          src={`${baseurl}/${post.image}`}
           alt=""
         />
       </div>
@@ -78,22 +91,28 @@ export const PostCard = ({ post, feed }) => {
             </Avatar>
             <input onChange={(e) => setComment(e.target.value)} type="text" />
             {/* <button onClick={() => dispatch(commentPost({postId:post._id, comment: comment})) }>Comment</button> */}
-            {feed && <Button
-              onClick={() =>
-                dispatch(commentPostFromFeed({ postId: post._id, comment: comment }))
-              }
-              size={"large"}
-            >
-              Comment
-            </Button>}
-            {!feed && <Button
-              onClick={() =>
-                dispatch(commentPost({ postId: post._id, comment: comment }))
-              }
-              size={"large"}
-            >
-              Comment
-            </Button>}
+            {feed && (
+              <Button
+                onClick={() =>
+                  dispatch(
+                    commentPostFromFeed({ postId: post._id, comment: comment })
+                  )
+                }
+                size={"large"}
+              >
+                Comment
+              </Button>
+            )}
+            {!feed && (
+              <Button
+                onClick={() =>
+                  dispatch(commentPost({ postId: post._id, comment: comment }))
+                }
+                size={"large"}
+              >
+                Comment
+              </Button>
+            )}
           </div>
           <div className="comments-view">
             {post.comments.map((commentItem) => {
