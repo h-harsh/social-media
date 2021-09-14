@@ -50,7 +50,7 @@ export const CreatePost = () => {
         <input
           type="file"
           name="post-image"
-          id="post-imagea"
+          id="post-image"
           onChange={onInputChange}
         />
         <div className="pic-display-post">
