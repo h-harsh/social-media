@@ -10,6 +10,14 @@
 .pic-display-post img{
     width: 35rem;
 }
+@media screen and (max-width: 600px) {
+    .createPost-card{
+        max-width: 30rem;
+    }
+    .pic-display-post img{
+        max-width: 30rem;
+    }
+  }
 .createPost-card-p1{
     border-bottom: 1px solid whitesmoke;
 }

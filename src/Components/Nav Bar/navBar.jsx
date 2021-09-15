@@ -23,11 +23,11 @@ const navigate = useNavigate()
           <div className="navi-bar-logo ">
               Fine-socials
           </div>
-          {
+          {/* {
               token ? (
                 <div className="navi-bar-search-bar">.</div>
               ):(null)
-          }
+          } */}
           {
               token ? (
                 <ul className="navi-bar-loggedin-menu">

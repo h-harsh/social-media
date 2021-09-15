@@ -50,3 +50,9 @@
   border: none;
   margin-right: 1.5rem;
 }
+
+@media screen and (max-width: 690px) {
+  .navi-bar-logo{
+    display: none;
+  }
+}

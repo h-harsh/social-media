@@ -41,10 +41,10 @@ function App() {
       </div>
       {state.token ? (
         <div className="app-main-comp">
-          <div>
+          <div className="comp-left">
             <SideBarMain />
           </div>
-          <div >
+          <div className="comp-mid">
             <Routes>
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<SignUp />} />
@@ -61,7 +61,7 @@ function App() {
               <PrivateRoute path="/notifications" element={<Notifications />} />
             </Routes>
           </div>
-          <div>
+          <div className="comp-right">
             <RSideBar />
           </div>
         </div>

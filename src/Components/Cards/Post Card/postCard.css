@@ -5,6 +5,11 @@
     border-radius: 10px;
     /* box-shadow: ; */
 }
+@media screen and (max-width: 600px) {
+    .post-card{
+        max-width: 35rem;
+    }
+  }
 
 /* Post author details */
 .post-author-details{
