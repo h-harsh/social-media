@@ -36,7 +36,7 @@ export const LoginBox = () => {
       <button
         className="login-item nm-btn2 an"
         // onClick={() => loginHandler(userName, password)}
-        onClick={() =>dispatch(userLogin({userName: 'salman', password:'viraj'}))}
+        onClick={() =>dispatch(userLogin({userName: 'harsh', password:'Harsh123'}))}
       >
         Login as Guest
       </button>
