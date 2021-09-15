@@ -5,9 +5,12 @@ import { loadAllUsers, loadFriends } from "../otherUsersSlice";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Avatar, Button } from "antd";
+import { UserOutlined } from "@ant-design/icons";
+import { baseurl } from "../../../utils/baseurl";
 
 // so this component will create a link to new user timelien page
 // Link tag will send user
+/*  */
 
 export const UserListCardSmall = ({ user }) => {
   const friendsState = useSelector((state) => state.friendsData);
@@ -20,18 +23,28 @@ export const UserListCardSmall = ({ user }) => {
     setIdArray(friendsState.following?.map((item) => item._id));
   }, [dispatch, friendsState.following]);
 
+  // useEffect(() => {
+  //   dispatch(() => loadFriends());
+  // }, [])
+  console.log("hello", idArray)
+
   return (
     <>
       <div className="user-card-box user-card-box-small">
         <div className="flex-cont">
-        <Avatar size={60} style={{ color: "#f56a00", backgroundColor: "#fde3cf" }}> A </Avatar>
-        <div className="user-card-details">
-          <Link to={`/timeline/${user._id}`}>
-            <h2> {user.fullName}</h2>
-          </Link>
-          {/* <p> {user.followers.length + 1} Followers</p> */}
-          <p> {user.following.length + 1} Following </p>
-        </div>
+          {user.profilePicture ? (
+            <Avatar size={60} src={`${baseurl}/${user.profilePicture}`} />
+          ) : (
+            <Avatar size={60} icon={<UserOutlined />} />
+          )}
+
+          <div className="user-card-details">
+            <Link to={`/timeline/${user._id}`}>
+              <h2> {user.fullName}</h2>
+            </Link>
+            {/* <p> {user.followers.length + 1} Followers</p> */}
+            <p> {user.following.length + 1} Following </p>
+          </div>
         </div>
 
         <div>
@@ -62,8 +75,8 @@ export const UserListCardSmall = ({ user }) => {
 };
 export const UserListCard = ({ user }) => {
   const friendsState = useSelector((state) => state.friendsData);
-  const dispatch = useDispatch();
   const [idArray, setIdArray] = useState([]);
+  const dispatch = useDispatch();
   const [temp, setTemp] = useState(true);
 
   useEffect(() => {
@@ -71,18 +84,26 @@ export const UserListCard = ({ user }) => {
     setIdArray(friendsState.following?.map((item) => item._id));
   }, [dispatch, friendsState.following]);
 
+  if( idArray === undefined || idArray.length === 0){
+    dispatch(() => loadFriends());
+  }
+
   return (
     <>
       <div className="user-card-box">
         <div className="flex-cont">
-        <Avatar size={70} style={{ color: "#f56a00", backgroundColor: "#fde3cf" }}> A </Avatar>
-        <div className="user-card-details">
-          <Link to={`/timeline/${user._id}`}>
-            <h2> {user.fullName}</h2>
-          </Link>
-          {/* <p> {user.followers.length + 1} Followers</p> */}
-          <p> {user.following.length + 1} Following </p>
-        </div>
+        {user.profilePicture ? (
+            <Avatar size={70} src={`${baseurl}/${user.profilePicture}`} />
+          ) : (
+            <Avatar size={70} icon={<UserOutlined />} />
+          )}
+          <div className="user-card-details">
+            <Link to={`/timeline/${user._id}`}>
+              <h2> {user.fullName}</h2>
+            </Link>
+            {/* <p> {user.followers.length + 1} Followers</p> */}
+            <p> {user.following.length + 1} Following </p>
+          </div>
         </div>
 
         <div>

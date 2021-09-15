@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loadAllUsers } from "../otherUsersSlice";
+import { loadAllUsers, loadFriends } from "../otherUsersSlice";
 import { UserListCard, UserListCardSmall } from "../User List Card/userListCard";
 import { setupAuthHeaderForServiceCalls } from "../../Auth User/util";
 
@@ -12,6 +12,7 @@ export const AllUsersList = () => {
 
   useEffect(() => {
     dispatch(loadAllUsers("psaram"));
+    dispatch(loadFriends());
   }, [dispatch]);
 
   // console.log(allUsersData);
@@ -33,6 +34,7 @@ export const AllUsersListSideBar = () => {
 
   useEffect(() => {
     dispatch(loadAllUsers("psaram"));
+    dispatch(loadFriends());
   }, [dispatch]);
 
   // console.log(allUsersData);
