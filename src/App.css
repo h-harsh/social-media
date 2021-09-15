@@ -1,6 +1,9 @@
 .app{
   background-color: #f0f2f5;
 }
+body{
+  background-color: #f0f2f5;
+}
 .app-main-comp{
   display: grid;
   grid-template-columns: 1.5fr 5fr 2.5fr;
