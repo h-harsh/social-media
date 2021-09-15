@@ -16,7 +16,7 @@ export const TimelineSelf = () => {
         <CreatePost />
       </div>
       <div className="to-center">
-        <TPostDisplay userId={state.currentUser._id} />
+        <TPostDisplay userId={state.currentUser._id} self />
       </div>
     </>
   );

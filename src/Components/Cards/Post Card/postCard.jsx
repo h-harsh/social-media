@@ -18,7 +18,7 @@ import {
 } from "@ant-design/icons";
 import { baseurl } from "../../../utils/baseurl";
 
-export const PostCard = ({ post, feed }) => {
+export const PostCard = ({ post, feed, self  }) => {
   const [comment, setComment] = useState("");
   const [showCommentsBox, setShowCommentsBox] = useState(false);
   const dispatch = useDispatch();
@@ -37,7 +37,7 @@ export const PostCard = ({ post, feed }) => {
             <p>{post.createdAt}</p>
           </div>
         </div>
-        {!feed && (
+        {!feed && self ? (
           <div>
             <button
               onClick={() => dispatch(deletePost(post._id))}
@@ -46,7 +46,7 @@ export const PostCard = ({ post, feed }) => {
               <DeleteOutlined />
             </button>
           </div>
-        )}
+        ) : null}
       </div>
 
       <div className="post-content">

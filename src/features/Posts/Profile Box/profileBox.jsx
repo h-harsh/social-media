@@ -45,7 +45,7 @@ export const ProfileBox = ({ userId }) => {
           <div className="profile-card-p2">
             <div className="profile-card-details">
               <h1>{user.fullName}</h1>
-              <p>Ye bio haiii {user.bio}</p>
+              <p> {user.bio}</p>
             </div>
 
             <div className="profile-card-details-p3">
@@ -98,7 +98,7 @@ export const ProfileBoxSelf = ({ user }) => {
           <div className="profile-card-p2">
             <div className="profile-card-details">
               <h1>{state.currentUser.fullName}</h1>
-              <p>Ye bio haiii {state.currentUser.bio}</p>
+              <p> {state.currentUser.bio}</p>
             </div>
 
             <div className="profile-card-details-p3">
