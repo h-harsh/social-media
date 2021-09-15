@@ -1,6 +1,6 @@
 import "./postCard.css";
 import { useState } from "react";
-import { useDispatch, useStore } from "react-redux";
+import { useDispatch, useSelector, useStore } from "react-redux";
 import { deletePost, likePost } from "../../../features/Posts/postsSlice";
 import { commentPost } from "../../../features/Posts/postsSlice";
 import {
@@ -12,7 +12,9 @@ import {
   ShareAltOutlined,
   CommentOutlined,
   LikeOutlined,
+  LikeFilled,
   DeleteOutlined,
+  UserOutlined,
 } from "@ant-design/icons";
 import { baseurl } from "../../../utils/baseurl";
 
@@ -20,17 +22,14 @@ export const PostCard = ({ post, feed }) => {
   const [comment, setComment] = useState("");
   const [showCommentsBox, setShowCommentsBox] = useState(false);
   const dispatch = useDispatch();
+  const currentUser = useSelector((state) => state.userData.currentUser);
+
   return (
     <div className="post-card">
       <div className="post-author-details">
         <div className="post-author-details-inner">
           <div>
-            <Avatar
-              size={40}
-              style={{ color: "#f56a00", backgroundColor: "#fde3cf" }}
-            >
-              A
-            </Avatar>
+            <Avatar size={40} icon={<UserOutlined />} />
           </div>
 
           <div className="post-author-details-p2">
@@ -38,18 +37,23 @@ export const PostCard = ({ post, feed }) => {
             <p>{post.createdAt}</p>
           </div>
         </div>
-        {!feed && <div >
-          <button onClick={() => dispatch(deletePost(post._id))} className="post-del-btn"><DeleteOutlined /></button>
-        </div>}
+        {!feed && (
+          <div>
+            <button
+              onClick={() => dispatch(deletePost(post._id))}
+              className="post-del-btn"
+            >
+              <DeleteOutlined />
+            </button>
+          </div>
+        )}
       </div>
 
       <div className="post-content">
         <p>{post.text}</p>
-        <img
-          className="post-content-img"
-          src={`${baseurl}/${post.image}`}
-          alt=""
-        />
+        <div className="post-content-img">
+          <img src={`${baseurl}/${post.image}`} alt="" />
+        </div>
       </div>
 
       <div className="post-interaction-details">
@@ -59,9 +63,21 @@ export const PostCard = ({ post, feed }) => {
 
       <div className="post-actions">
         {feed && (
-          <button onClick={() => dispatch(likePostFromFeed(post._id))}>
+          <button
+            className={
+              post.likes.includes(currentUser._id)
+                ? "post-liked"
+                : "post-not-liked"
+            }
+            onClick={() => dispatch(likePostFromFeed(post._id))}
+          >
             {" "}
-            <LikeOutlined /> Likez
+            {post.likes.includes(currentUser._id) ? (
+              <LikeFilled />
+            ) : (
+              <LikeOutlined />
+            )}{" "}
+            Like
           </button>
         )}
         {!feed && (
@@ -74,28 +90,31 @@ export const PostCard = ({ post, feed }) => {
           {" "}
           <CommentOutlined /> Comment
         </button>
-        <button>
+        {/* <button>
           {" "}
           <ShareAltOutlined /> Share
-        </button>
+        </button> */}
       </div>
 
       {showCommentsBox ? (
         <div className="post-comment-box">
           <div className="comment-create">
-            <Avatar
-              size={40}
-              style={{ color: "#f56a00", backgroundColor: "#fde3cf" }}
-            >
-              S
-            </Avatar>
-            <input onChange={(e) => setComment(e.target.value)} type="text" />
+            <Avatar size={40} icon={<UserOutlined />} />
+            <input
+              id="comment"
+              onChange={(e) => setComment(e.target.value)}
+              type="text"
+            />
             {/* <button onClick={() => dispatch(commentPost({postId:post._id, comment: comment})) }>Comment</button> */}
             {feed && (
               <Button
                 onClick={() =>
                   dispatch(
-                    commentPostFromFeed({ postId: post._id, comment: comment })
+                    commentPostFromFeed({
+                      postId: post._id,
+                      comment: comment,
+                      setComment,
+                    })
                   )
                 }
                 size={"large"}
@@ -118,12 +137,7 @@ export const PostCard = ({ post, feed }) => {
             {post.comments.map((commentItem) => {
               return (
                 <div className="post-author-details post-comments-box">
-                  <Avatar
-                    size={35}
-                    style={{ color: "#f56a00", backgroundColor: "#fde3cf" }}
-                  >
-                    S
-                  </Avatar>
+                  <Avatar size={35} icon={<UserOutlined />} />
                   <div className="post-author-details-p2 post-comments-details">
                     <h4>{commentItem.fullName}</h4>
                     <p>{commentItem.comment}</p>

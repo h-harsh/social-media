@@ -139,10 +139,13 @@ export const likePostFromFeed = createAsyncThunk(
 );
 export const commentPostFromFeed = createAsyncThunk(
   "auth/comment",
-  async ({postId, comment}, { fulfillWithValue, rejectWithValue }) => {
+  async ({postId, comment, setComment}, { fulfillWithValue, rejectWithValue }) => {
     try {
       const response = await axios.post(`${baseurl}/post/comment/${postId}`, {comment});
       // console.log(response.data);
+      if(response.status === 200){
+        document.getElementById("comment").value = ""
+      }
       return fulfillWithValue(response.data);
     } catch (error) {
       console.log(error.response.data);

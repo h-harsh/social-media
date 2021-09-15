@@ -9,9 +9,9 @@
 /* Post author details */
 .post-author-details{
     display: flex;
-    justify-content: space-between;
     padding: 0.8rem;
     align-items: center;
+    justify-content: space-between;
 }
 .post-author-details-inner{
     display: flex;
@@ -35,8 +35,10 @@
 .post-content p {
     padding: 0.8rem;
 }
-.post-content-img{
+.post-content-img img{
     max-width: 35rem;
+    max-height: 25rem;
+    width: 100%;
 }
 
 /* post interaction details of likes and comments */
@@ -64,6 +66,10 @@
 .post-actions button:hover{
     color: rgb(83, 157, 253);
 }
+.post-liked{
+    color: rgb(83, 157, 253);
+}
+
 
 /* comment */ 
 .comment-create{
@@ -82,6 +88,7 @@
 /* comments view box */
 .post-comments-box{
     padding: 0.3rem ;
+    justify-content: flex-start;
 }
 .post-comments-details{
     background-color: whitesmoke;

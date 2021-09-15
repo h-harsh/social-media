@@ -70,6 +70,9 @@ export const commentPost = createAsyncThunk(
         comment,
       });
       // console.log(response.data);
+      if(response.status === 200){
+        document.getElementById("comment").value = ""
+      }
       return fulfillWithValue(response.data);
     } catch (error) {
       console.log(error.response.data);
