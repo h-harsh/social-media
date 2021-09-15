@@ -44,7 +44,7 @@ function App() {
           <div>
             <SideBarMain />
           </div>
-          <div>
+          <div >
             <Routes>
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<SignUp />} />

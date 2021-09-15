@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { loadFeed } from "../authUserSlice";
 import { setupAuthHeaderForServiceCalls } from "../util";
 import { PostCard } from "../../../Components/Cards/Post Card/postCard";
+import { Spin } from 'antd';
 
 export const FeedComp = () => {
   const state = useSelector((state) => state.userData);
@@ -17,7 +18,9 @@ export const FeedComp = () => {
   return (
     <div id="hello">
       {state.userFeed === null ? (
-        <h1>Error</h1>
+        <div className="loader-box">
+          <Spin size="large" />
+        </div>
       ) : (
         state.userFeed.map((post) => {
           return <PostCard post={post} feed />;

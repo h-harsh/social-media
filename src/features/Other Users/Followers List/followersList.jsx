@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { loadFriends } from "../otherUsersSlice";
 import { UserListCard } from "../User List Card/userListCard";
 import { setupAuthHeaderForServiceCalls } from "../../Auth User/util";
+import { Spin } from 'antd';
 
 export const FollowersList = () => {
   const friendsState = useSelector((state) => state.friendsData);
@@ -15,13 +16,17 @@ export const FollowersList = () => {
   }, [dispatch]);
 
   return (
-    <>
-      <h3>Map on all Followers</h3>
+    <div style={{height:'100vh'}}>
       {friendsState.followers !== null
         ? friendsState.followers.map((user) => {
             return <UserListCard user={user} />;
           })
-        : null}
-    </>
+        :  <div className="loader-box">
+        <Spin size="large" />
+      </div> }
+      {friendsState.followers !== null && friendsState.followers.length === 0 ? <div className="loader-box">
+        No Followers yet
+      </div> : null }
+    </div>
   );
 };
