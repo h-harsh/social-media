@@ -5,9 +5,14 @@
     border-radius: 10px;
     /* box-shadow: ; */
 }
-@media screen and (max-width: 600px) {
+@media screen and(max-width: 600px){
     .post-card{
-        max-width: 35rem;
+        width: 28rem;
+    }
+    .post-content-img img{
+        width: 28rem;
+        max-height: 25rem;
+        width: 100%;
     }
   }
 
