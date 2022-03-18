@@ -1,28 +1,47 @@
-.app{
-  background-color: #f0f2f5;
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+  object-fit: cover;
 }
-body{
-  background-color: #f0f2f5;
+:root {
+  --primaryColor: #1890ff;
+  --primaryShadeDark: #007ef5 ;
+  --primaryShadeLight: #47a6ff ;
+
+  --secondaryColor: #35524a ;
+  --secondaryShadeDark: #283e38  ;
+  --secondaryShadeLight: #35524a ;
+
+  --textColor: rgb(34, 34, 34);
+  --textColorLight: rgb(117, 117, 117);
+
+  --bgColorLight: #f0f2f5;
 }
 
-
-.app-main-comp-loggedout{
-  margin-top: 5rem;
+.app-main-comp-loggedout {
+  margin-top: 1.5rem;
+  background-color: var(--bgColorLight);
+  /* background-color: white; */
 }
 
-.to-center{
+.to-center {
   margin: auto;
   width: fit-content;
 }
 
 /* Login page */
-.login-outer{
+.login-outer {
   display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
-.loader-box{
+.loader-box {
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -30,7 +49,7 @@ body{
   align-content: center;
   font-size: 3rem;
 }
-.app-main-comp{
+.app-main-comp {
   display: grid;
   grid-template-columns: 1.5fr 5fr 2.5fr;
   margin-top: 5rem;
@@ -38,22 +57,205 @@ body{
 }
 
 @media screen and (max-width: 1150px) {
-  .app-main-comp{
-    grid-template-columns:   1.5fr 5fr  ;
+  .app-main-comp {
+    grid-template-columns: 1.5fr 5fr;
   }
-  .comp-right{
+  .comp-right {
     display: none;
   }
 }
 @media screen and (max-width: 820px) {
-  .app-main-comp{
+  .app-main-comp {
     /* grid-template-columns: 0fr  5fr 0fr  ; */
-    grid-template-columns: 5fr  ;
+    grid-template-columns: 5fr;
   }
-  .comp-left{
+  .comp-left {
     display: none;
   }
-  .comp-right{
+  .comp-right {
     display: none;
   }
+}
+
+/* From  there */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Josefin Sans", sans-serif;
+}
+
+
+.page-title {
+  border-bottom: 1px solid black;
+  margin-bottom: 1rem;
+}
+.page-title h1 {
+  padding: 0.5rem;
+}
+
+.testimonials-card-holder {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.kno-more-btnn-cont {
+  text-align: center;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+}
+/* Utils */
+.fx {
+  display: flex;
+}
+.wrap {
+  flex-wrap: wrap;
+}
+.full-img {
+  max-width: 100%;
+  max-height: 100%;
+}
+/* Design Sys */
+
+.section-container {
+  padding: 4rem 0;
+}
+.section-title-cont {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.8rem;
+  justify-content: center;
+  /* background-color: red; */
+}
+.section-title-line {
+  width: 90%;
+  max-width: 90%;
+  height: 4px;
+  background-color: #b7b7b7;
+  border: 0;
+  
+}
+.section-title {
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: left;
+  color: var(--section-title-cl);
+  max-width: 55%;
+  min-width: 20%;
+  text-align: center;
+  margin: 0 1.5rem;
+}
+.p-text {
+  color: #596875;
+  font-size: 1rem;
+  line-height: 1.2rem;
+}
+.card-sub-title {
+  color: #2f4152;
+  font-size: 1.2rem;
+  line-height: 1.4rem;
+}
+.card-holder {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 85%;
+  margin: auto;
+  /* background-color: yellow; */
+}
+.card-holder-full {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto;
+  /* background-color: yellow; */
+}
+.card {
+  width: 15rem;
+  margin: 0.6rem;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: #00000040 0 8px 25px;
+}
+.only-card {
+  margin: 0.6rem;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: #00000040 0 8px 25px;
+}
+.card-landscape {
+  width: 30rem;
+  margin: 0.6rem;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: #00000040 0 8px 25px;
+}
+.card-bg-gray {
+  background-color: #e8e8e8;
+}
+.bg-gray-lite {
+  background-color: #fafafa;
+}
+.bg-apna-blue {
+  background-color: var(--primary-cl);
+  color: white;
+}
+@media (max-width: 580px) {
+  .card-landscape {
+    width: 15rem;
+    margin: 0.6rem;
+  }
+  .section-title-line {
+    width: 6rem;
+  }
+}
+
+.one-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 80%;
+  margin: auto;
+}
+
+.one-view-text-box {
+  font-size: 1.1rem;
+  line-height: 1.5rem;
+  color: rgb(24, 23, 23);
+  margin: 1rem;
+}
+.banner-over-text {
+  font-size: 3rem;
+}
+
+/* //Utility */
+.cl-white {
+  color: white !important;
+}
+.bg-whsmoke {
+  background-color: whitesmoke;
+}
+.bg-apna-orange {
+  background-color: #fa8128;
+}
+
+.cl-orng-text {
+  color: #ffaa46;
+}
+.bg-color-light{
+  background-color: var(--bgLightColor);
+}
+.bg-color-white{
+  background-color: white;
+}
+.book-store{
+  text-decoration: none !important;
+  font-style: italic;
+  font-size: 2.3rem;
+  font-weight: 600;
+  font-family: 'Syne Mono', monospace;
+  color: var(--primaryColor);
 }

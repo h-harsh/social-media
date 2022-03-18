@@ -35,7 +35,7 @@ function App() {
   }, [state.token, dispatch]);
 
   return (
-    <div className="app">
+    <div >
       <div className="app-nav-bar">
         <NavBar />
       </div>
