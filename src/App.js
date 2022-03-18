@@ -24,6 +24,8 @@ import {
 import { NavBar } from "./Components/Nav Bar/navBar";
 import { SideBarMain } from "./Components/Side Bar Main/sideBar";
 import { RSideBar } from "./Components/Side Bar 2/rightSideBar";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const state = useSelector((state) => state.userData);
@@ -35,7 +37,7 @@ function App() {
   }, [state.token, dispatch]);
 
   return (
-    <div >
+    <div>
       <div className="app-nav-bar">
         <NavBar />
       </div>
@@ -73,6 +75,7 @@ function App() {
           </Routes>
         </div>
       )}
+      <ToastContainer position="bottom-right" theme="light" autoClose={3000} />
     </div>
   );
 }

@@ -19,11 +19,11 @@ const SignUpBox = () => {
   const state = useSelector((state) => state.userData);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (state.signup === "true") {
-      dispatch(userLogin({ userName, password }));
-    }
-  }, [state, dispatch]);
+  // useEffect(() => {
+  //   if (state.signup === "true") {
+  //     dispatch(userLogin({ userName, password }));
+  //   }
+  // }, [state, dispatch]);
 
   // const signUpHandler = async (
   //   fullName,

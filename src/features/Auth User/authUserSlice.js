@@ -8,10 +8,12 @@ import {
   getUserFromLocalStorage,
 } from "./util";
 import { getTokenFromLocalStorage } from "./util";
+import { toast } from "react-toastify";
 
 export const userLogin = createAsyncThunk(
   "auth/login",
   async ({ userName, password }, { fulfillWithValue, rejectWithValue }) => {
+    const toastId = toast.loading("Loggin in");
     try {
       const response = await axios.post(`${baseurl}/user/login`, {
         userName,
@@ -21,10 +23,25 @@ export const userLogin = createAsyncThunk(
       if (response.status === 200) {
         setupAuthHeaderForServiceCalls(response.data.token);
         setLocalStorage(response.data.user, response.data.token);
+        toast.update(toastId, {
+          render: "You are now Logged in",
+          type: "success",
+          isLoading: false,
+          autoClose: 2000,
+        });
       }
+      
+
       return fulfillWithValue(response.data);
     } catch (error) {
       console.log(error.response.data);
+      toast.update(toastId, {
+        render: "Login failed, Retry",
+        type: "success",
+        isLoading: false,
+        autoClose: 2000,
+      });
+
       return rejectWithValue(error.response.data);
     }
   }
@@ -35,6 +52,7 @@ export const userSignup = createAsyncThunk(
     { fullName, userName, email, password },
     { fulfillWithValue, rejectWithValue }
   ) => {
+    const toastIdNew = toast.loading("Signing up");
     try {
       const response = await axios.post(`${baseurl}/user/signup`, {
         fullName,
@@ -43,9 +61,22 @@ export const userSignup = createAsyncThunk(
         password,
       });
       // console.log(response.data)
+      toast.update(toastIdNew, {
+        render: "Signup Complete",
+        type: "success",
+        isLoading: false,
+        autoClose: 2000,
+      });
       return fulfillWithValue(response.data);
+      
     } catch (error) {
       console.log(error.response.data);
+      toast.update(toastIdNew, {
+        render: "Technical Error",
+        type: "error",
+        isLoading: false,
+        autoClose: 2000,
+      });
       return rejectWithValue(error.response.data);
     }
   }
@@ -69,26 +100,29 @@ export const userEdit = createAsyncThunk(
 );
 export const userEditProfilePicture = createAsyncThunk(
   "auth/profilePicture",
-  async(formData, {fulfillWithValue, rejectWithValue}) => {
-    try{
-      const response = await axios.post(`${baseurl}/user/edit/profile`, formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
-      console.log("77 authUserSlice",response.data);
-      if(response.status === 200){
+  async (formData, { fulfillWithValue, rejectWithValue }) => {
+    try {
+      const response = await axios.post(
+        `${baseurl}/user/edit/profile`,
+        formData,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
+      console.log("77 authUserSlice", response.data);
+      if (response.status === 200) {
         document.getElementById("profile-file").value = "";
         clearLocalStorage();
         setupAuthHeaderForServiceCalls(response.data.token);
         setLocalStorage(response.data.user, response.data.token);
       }
       return fulfillWithValue(response.data);
-    }catch(error){
-      console.log(error.response)
+    } catch (error) {
+      console.log(error.response);
       return rejectWithValue(error.response.data);
     }
   }
-)
-
+);
 
 export const clearNotif = createAsyncThunk(
   "auth/clearnotif",
@@ -127,7 +161,7 @@ export const likePostFromFeed = createAsyncThunk(
   "auth/like",
   async (postId, { fulfillWithValue, rejectWithValue }) => {
     try {
-      console.log(postId)
+      console.log(postId);
       const response = await axios.post(`${baseurl}/post/like/${postId}`, {});
       // console.log(response.data);
       return fulfillWithValue(response.data);
@@ -139,12 +173,17 @@ export const likePostFromFeed = createAsyncThunk(
 );
 export const commentPostFromFeed = createAsyncThunk(
   "auth/comment",
-  async ({postId, comment, setComment}, { fulfillWithValue, rejectWithValue }) => {
+  async (
+    { postId, comment, setComment },
+    { fulfillWithValue, rejectWithValue }
+  ) => {
     try {
-      const response = await axios.post(`${baseurl}/post/comment/${postId}`, {comment});
+      const response = await axios.post(`${baseurl}/post/comment/${postId}`, {
+        comment,
+      });
       // console.log(response.data);
-      if(response.status === 200){
-        document.getElementById("comment").value = ""
+      if (response.status === 200) {
+        document.getElementById("comment").value = "";
       }
       return fulfillWithValue(response.data);
     } catch (error) {
@@ -228,7 +267,7 @@ const authSlice = createSlice({
       state.loginStatus = "loggedIn";
     },
     [userEditProfilePicture.fulfilled]: (state, action) => {
-      console.log("Photo fullfilledd")
+      console.log("Photo fullfilledd");
       state.signup = "idle";
       state.currentUser = action.payload.user;
       state.currentUser.userId = action.payload.user._id;
@@ -255,14 +294,14 @@ const authSlice = createSlice({
 
       state.userFeed[postIndex].likes = action.payload.data;
     },
-    [commentPostFromFeed.fulfilled] : (state, action) => {
+    [commentPostFromFeed.fulfilled]: (state, action) => {
       const postIndex = state.userFeed.findIndex(
-          (post) => post._id === action.payload.postId
-        );
-  
-        state.userFeed[postIndex].comments = action.payload.commentsData;
+        (post) => post._id === action.payload.postId
+      );
+
+      state.userFeed[postIndex].comments = action.payload.commentsData;
       // state.tempComment = action.payload.commentsData
-  },
+    },
     // [loadFeed.pending] : (state, action) => {
     //     state.userFeed = "pending"
     // },
