@@ -12,10 +12,10 @@
 }
 @media screen and (max-width: 600px) {
     .createPost-card{
-        max-width: 25rem;
+        max-width: 22rem;
     }
     .pic-display-post img{
-        max-width: 25rem;
+        max-width: 22rem;
     }
   }
 .createPost-card-p1{

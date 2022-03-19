@@ -7,7 +7,7 @@ import {
   likePostFromFeed,
   commentPostFromFeed,
 } from "../../../features/Auth User/authUserSlice";
-import { Avatar, Button } from "antd";
+import { Avatar } from "antd";
 import {
   CommentOutlined,
   LikeOutlined,
@@ -17,6 +17,8 @@ import {
 } from "@ant-design/icons";
 import { baseurl } from "../../../utils/baseurl";
 import { LoaderSimple } from "../../../New Components";
+import { Button, Tooltip } from 'antd';
+import { RightCircleTwoTone  } from '@ant-design/icons';
 
 export const PostCard = ({ post, feed, self }) => {
   const [comment, setComment] = useState("");
@@ -121,9 +123,9 @@ export const PostCard = ({ post, feed, self }) => {
                   )
                 }
                 size={"large"}
-              >
-                Comment
-              </Button>
+                shape="circle"
+                icon={<RightCircleTwoTone size={20} /> }
+              />
             )}
             {!feed && (
               <Button
@@ -131,9 +133,9 @@ export const PostCard = ({ post, feed, self }) => {
                   dispatch(commentPost({ postId: post._id, comment: comment }))
                 }
                 size={"large"}
-              >
-                Comment
-              </Button>
+                shape="circle"
+                icon={<RightCircleTwoTone  /> }
+               />
             )}
           </div>
           <div className="comments-view">

@@ -22,3 +22,10 @@
 .user-card-box-small{
     width: 22rem;
 }
+
+@media screen and (max-width: 600px) {
+    
+    .user-card-box{
+        width: 22rem;    
+    }
+  }
