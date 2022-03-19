@@ -16,7 +16,7 @@ export const CreatePost = () => {
   const onFormSubmit = async () => {
     const formData = new FormData();
     formData.append("post-image", file);
-    console.log(file, formData)
+    // console.log(file, formData)
     // if (file) {
       // dispatch(addPost({text,formData}));
       dispatch(addPost({formData,text}));

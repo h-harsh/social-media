@@ -26,11 +26,11 @@ export const UserListCardSmall = ({ user }) => {
   // useEffect(() => {
   //   dispatch(() => loadFriends());
   // }, [])
-  console.log("hello", idArray)
+  
 
   return (
-    <>
-      <div className="user-card-box user-card-box-small only-card">
+    
+      <div key={user._id} className="user-card-box user-card-box-small only-card">
         <div className="flex-cont">
           {user.profilePicture ? (
             <Avatar size={60} src={`${baseurl}/${user.profilePicture}`} />
@@ -70,7 +70,7 @@ export const UserListCardSmall = ({ user }) => {
           )}
         </div>
       </div>
-    </>
+    
   );
 };
 export const UserListCard = ({ user }) => {
@@ -89,8 +89,8 @@ export const UserListCard = ({ user }) => {
   }
 
   return (
-    <>
-      <div className="user-card-box">
+    
+      <div key={user._id} className="user-card-box">
         <div className="flex-cont">
         {user.profilePicture ? (
             <Avatar size={70} src={`${baseurl}/${user.profilePicture}`} />
@@ -129,50 +129,6 @@ export const UserListCard = ({ user }) => {
           )}
         </div>
       </div>
-    </>
+    
   );
 };
-// export const UserListCard2 = ({ user }) => {
-//   const friendsState = useSelector((state) => state.friendsData);
-//   const dispatch = useDispatch();
-//   const [idArray, setIdArray] = useState([]);
-//   const [temp, setTemp] = useState(true);
-
-//   useEffect(() => {
-//     dispatch(() => loadFriends());
-//     setIdArray(friendsState.following?.map((item) => item._id));
-//   }, [dispatch, friendsState.following]);
-
-//   return (
-//     <>
-//       <div>
-//         <Link to={`/timeline/${user._id}`}>
-//           <h3>Name {user.fullName}</h3>
-//           <h4>Followers {user.followers.length + 1}</h4>
-//           <h4>Following {user.following.length + 1} </h4>
-//         </Link>
-//         <div>
-//           {idArray?.includes(user._id) ? (
-//             <button
-//               onClick={() => {
-//                 dispatch(unfollowFriend({ otherUserId: user._id }));
-//                 setTemp(!temp);
-//               }}
-//             >
-//               Unfollow
-//             </button>
-//           ) : (
-//             <button
-//               onClick={() => {
-//                 dispatch(followFriend({ otherUserId: user._id }));
-//                 setTemp(!temp);
-//               }}
-//             >
-//               Follow
-//             </button>
-//           )}
-//         </div>
-//       </div>
-//     </>
-//   );
-// };

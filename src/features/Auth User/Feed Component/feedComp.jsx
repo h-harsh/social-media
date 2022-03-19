@@ -9,7 +9,7 @@ import { Spin } from 'antd';
 export const FeedComp = () => {
   const state = useSelector((state) => state.userData);
   const dispatch = useDispatch();
-  console.log(state.userFeed);
+
 
   useEffect(() => {
     setupAuthHeaderForServiceCalls(state.token);
@@ -24,7 +24,11 @@ export const FeedComp = () => {
         </div>
       ) : (
         state.userFeed.map((post) => {
-          return <PostCard post={post} feed />;
+          return (
+            <div key={post.createdAt} >
+              <PostCard post={post} feed />
+            </div>
+          );
         })
       )}
 

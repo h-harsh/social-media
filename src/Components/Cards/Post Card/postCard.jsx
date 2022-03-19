@@ -26,7 +26,7 @@ export const PostCard = ({ post, feed, self }) => {
 
 
   return (
-    <div className="post-card only-card">
+    <div key={post.createdAt} className="post-card only-card">
       <div className="post-author-details">
         <div className="post-author-details-inner">
           <div>
@@ -35,7 +35,8 @@ export const PostCard = ({ post, feed, self }) => {
 
           <div className="post-author-details-p2">
             <h4>{post.authorName}</h4>
-            <p>{post.createdAt}</p>
+            {/* <p>{post.createdAt}</p> */}
+            <p>{post.createdAt.slice(0,10)}</p>
           </div>
         </div>
         {!feed && self ? (

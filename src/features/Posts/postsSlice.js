@@ -7,7 +7,7 @@ export const loadPosts = createAsyncThunk(
   async (userId, { fulfillWithValue, rejectWithValue }) => {
     try {
       const response = await axios.post(`${baseurl}/post/${userId}`);
-      console.log(response.data);
+      // console.log(response.data);
       return fulfillWithValue(response.data.allPosts);
     } catch (error) {
       console.log(error.response.data);
@@ -20,7 +20,7 @@ export const addPost = createAsyncThunk(
   async ({ formData, text }, { fulfillWithValue, rejectWithValue }) => {
     try {
       //console.log("1",{formData,text}) //{formData: FormData, text: 'Hello trials'}
-      console.log("2", formData, text);
+      // console.log("2", formData, text);
       const response = await axios.post(
         `${baseurl}/post/new/${text}`,
         formData,
@@ -28,7 +28,7 @@ export const addPost = createAsyncThunk(
           headers: { "Content-Type": "multipart/form-data" },
         }
       );
-      console.log(response.data);
+      // console.log(response.data);
       return fulfillWithValue(response.data.newPost);
     } catch (error) {
       console.log(error.response.data);
@@ -41,7 +41,7 @@ export const deletePost = createAsyncThunk(
   async (postId, { fulfillWithValue, rejectWithValue }) => {
     try {
       const response = await axios.delete(`${baseurl}/post/delete/${postId}`);
-      console.log(response.data);
+      // console.log(response.data);
       return fulfillWithValue(response.data.newPost);
     } catch (error) {
       console.log(error.response.data);
@@ -87,7 +87,7 @@ export const loadOtherUser = createAsyncThunk(
   async (userId, { fulfillWithValue, rejectWithValue }) => {
     try {
       const response = await axios.get(`${baseurl}/user/otherUser/${userId}`);
-      console.log(response.data);
+      // console.log(response.data);
       return fulfillWithValue(response.data.otherUserdata);
     } catch (error) {
       console.log(error.response.data);

@@ -54,7 +54,11 @@ export const AllUsersListSideBar = () => {
       allUsersData !== null ? (
         <div>
           {allUsersData.map((user) => {
-          return <UserListCardSmall user={user} />;
+          return (
+            <div key={user._id} >
+              <UserListCardSmall user={user} />
+            </div>
+          );
         })}
         </div>
       ) : (

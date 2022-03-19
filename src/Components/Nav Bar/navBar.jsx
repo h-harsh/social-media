@@ -4,8 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { clearData } from "../../features/Auth User/authUserSlice";
 import { useEffect } from "react";
 import { Button } from "antd";
-import logo from '../../logo.png'
-import logoSmall from '../../logo-small.png'
+import logo from "../../logo.png";
+import logoSmall from "../../logo-small.png";
 
 export const NavBar = () => {
   const token = useSelector((state) => state.userData.token);
@@ -19,69 +19,67 @@ export const NavBar = () => {
   }, [token, navigate]);
 
   return (
-    // <>
     <nav className="navi-bar">
-      {/* <div className="book-store">Fine-socials</div> */}
-      <div className=" nblogo-cont" >
-        <img className="nblogo-img" src={logo} alt="" />
+      <div className="nblogo-cont">
+        <img className="nblogo-img" src={logo} alt="nothing" />
       </div>
-      <div className=" nblogo-cont-mob" >
-        <img className="nblogo-img" src={logoSmall} alt="" />
+      <div className=" nblogo-cont-mob">
+        <img className="nblogo-img" src={logoSmall} alt="nothing" />
       </div>
       {token ? (
         <ul className="navi-bar-loggedin-menu">
-          <li className="icons-outer-cont" >
+          <li className="icons-outer-cont">
             <Link className="nav-icon-cont" to="/">
               {" "}
-              <i  className="fas fa-home nav-icons "></i>{" "}
+              <i className="fas fa-home nav-icons "></i>{" "}
             </Link>
           </li>
-          <li className="icons-outer-cont" >
+          <li className="icons-outer-cont">
             <Link className="nav-icon-cont" to="/timeline">
               {" "}
-              <i  className="fas fa-tasks nav-icons "></i>{" "}
+              <i className="fas fa-tasks nav-icons "></i>{" "}
             </Link>
           </li>
-          <li className="icons-outer-cont" >
+          <li className="icons-outer-cont">
             <Link className="nav-icon-cont" to="/allUsers">
               {" "}
-              <i  className="fas fa-users nav-icons "></i>{" "}
+              <i className="fas fa-users nav-icons "></i>{" "}
             </Link>
           </li>
-          <li className="icons-outer-cont" >
+          <li className="icons-outer-cont">
             <Link className="nav-icon-cont" to="/notifications">
               {" "}
-              <i  className="fas fa-bell nav-icons "></i>{" "}
+              <i className="fas fa-bell nav-icons "></i>{" "}
             </Link>
           </li>
-          <li className="icons-outer-cont" >
+          <li className="icons-outer-cont">
             <Link className="nav-icon-cont" to="/accountDetails">
               {" "}
-              <i  className="fas fa-user-circle nav-icons "></i>{" "}
+              <i className="fas fa-user-circle nav-icons "></i>{" "}
             </Link>
           </li>
         </ul>
       ) : (
-        <ul className="navi-bar-loggedout-menu">
+        <div className="navi-bar-loggedout-menu">
           <li>
             <Link to="/login">
-              <Button size="large" type="secondary" shape="round">Login</Button>
+              <Button size="large" type="secondary" shape="round">
+                Login
+              </Button>
             </Link>
           </li>
-          {/* <li>
-          <Link to="/signup">
-              <Button size="large" type="secondary" shape="round">Sign Up</Button>
-            </Link>
-          </li> */}
-        </ul>
+        </div>
       )}
       {token ? (
-        <button  className="logout nav-icon-cont" onClick={() => dispatch(clearData())}>
+        <button
+          className="logout nav-icon-cont"
+          onClick={() => dispatch(clearData())}
+        >
           <i  className="fas fa-power-off nav-icons "></i>
+          {/* <p>Hao</p> */}
         </button>
-      ) : null}
+      ) : <></> }
     </nav>
-    // </>
   );
 };
 

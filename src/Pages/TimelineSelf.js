@@ -5,7 +5,7 @@ import { TPostDisplay } from "../features/Posts/Post Display Timeline/t-postDisp
 
 export const TimelineSelf = () => {
   const state = useSelector((state) => state.userData);
-  console.log(state);
+
 
   return (
     <>

@@ -147,7 +147,7 @@ export const loadFeed = createAsyncThunk(
   async (param, { fulfillWithValue, rejectWithValue }) => {
     try {
       const response = await axios.get(`${baseurl}/feed`);
-      console.log(response.data.feedData);
+      // console.log(response.data.feedData);
       if (response.status === 200) {
         return fulfillWithValue(response.data.feedData);
       }
@@ -161,7 +161,7 @@ export const likePostFromFeed = createAsyncThunk(
   "auth/like",
   async (postId, { fulfillWithValue, rejectWithValue }) => {
     try {
-      console.log(postId);
+      // console.log(postId);
       const response = await axios.post(`${baseurl}/post/like/${postId}`, {});
       // console.log(response.data);
       return fulfillWithValue(response.data);
@@ -267,7 +267,7 @@ const authSlice = createSlice({
       state.loginStatus = "loggedIn";
     },
     [userEditProfilePicture.fulfilled]: (state, action) => {
-      console.log("Photo fullfilledd");
+      // console.log("Photo fullfilledd");
       state.signup = "idle";
       state.currentUser = action.payload.user;
       state.currentUser.userId = action.payload.user._id;
