@@ -1,9 +1,9 @@
-import { useDispatch, useSelector } from "react-redux";
+// import { useDispatch, useSelector } from "react-redux";
 import { ProfileBox } from "../features/Posts/Profile Box/profileBox";
 import { TPostDisplay } from "../features/Posts/Post Display Timeline/t-postDisplay";
 import { useParams } from "react-router-dom";
 export const Timeline = () => {
-  const state = useSelector((state) => state.userData);
+  // const state = useSelector((state) => state.userData);
 
   const { userId } = useParams();
 

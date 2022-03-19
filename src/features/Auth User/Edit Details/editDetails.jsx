@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { userEdit, userEditProfilePicture } from "../authUserSlice";
 import { Button } from "antd";
 import { Avatar } from "antd";
-import axios from "axios";
 import { baseurl } from "../../../utils/baseurl";
 import { UserOutlined } from "@ant-design/icons";
 import { setupAuthHeaderForServiceCalls } from "../util";

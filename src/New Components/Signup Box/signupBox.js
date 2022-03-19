@@ -1,16 +1,14 @@
-import axios from "axios";
+/*eslint-disable */
 import { useState, useEffect } from "react";
 import "./signupBox.css";
 import loginImage from "./signup4.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { Button } from "antd";
 import { userLogin, userSignup } from "../../features/Auth User/authUserSlice";
 import logo from '../../logo.png'
 
 const SignUpBox = () => {
-  const loginHandler = () => null;
-
   const [fullName, setFullName] = useState("");
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
@@ -18,7 +16,7 @@ const SignUpBox = () => {
 
   const dispatch = useDispatch();
   const state = useSelector((state) => state.userData);
-  const navigate = useNavigate();
+  
 
   useEffect(() => {
     if (state.signup === "true") {
@@ -26,45 +24,6 @@ const SignUpBox = () => {
     }
   }, [state, dispatch]);
 
-  // const signUpHandler = async (
-  //   fullName,
-  //   userName,
-  //   email,
-  //   password,
-  //   loginHandler
-  // ) => {
-  //   const toastId = toast.loading("Signing up")
-  //   try {
-
-  //     const response = await axios.post(
-  //       `${baseurl}/user/signup`,
-  //       {
-  //         fullName: fullName,
-  //         userName: userName,
-  //         email: email,
-  //         password: password,
-  //       },
-  //       {
-  //         headers: {
-  //           ContentType: "application/json",
-  //           "Access-Control-Allow-Origin": "*",
-  //         },
-  //       }
-  //     );
-  //     console.log(response)
-  //     if (response.status === 200) {
-  //       toast.update(toastId, { render: "Signup Complete", type: "success", isLoading: false, autoClose: 2000, });
-  //       console.log(userName, password);
-  //       loginHandler(userName, password);
-  //     } else{
-  //       toast.update(toastId, { render: "Check the details and try again", type: "error", isLoading: false, autoClose: 2000, });
-  //     }
-  //   } catch (error) {
-  //     console.log(error.response);
-  //     toast.update(toastId, { render: "Technical Error", type: "error", isLoading: false, autoClose: 2000, });
-  //   }
-  // };
-  // console.log(fullName, userName, email, password);
 
   return (
     <div className="login-container only-card">

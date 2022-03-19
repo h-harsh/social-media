@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addPost } from "../postsSlice";
 import { UserOutlined } from "@ant-design/icons";
-import { Avatar, Button } from "antd";
+import { Avatar } from "antd";
 
 export const CreatePost = () => {
   const [text, setText] = useState("");

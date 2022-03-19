@@ -2,7 +2,7 @@ import "./navBar.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { clearData } from "../../features/Auth User/authUserSlice";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Button } from "antd";
 import logo from '../../logo.png'
 import logoSmall from '../../logo-small.png'
@@ -77,8 +77,7 @@ export const NavBar = () => {
       )}
       {token ? (
         <button  className="logout nav-icon-cont" onClick={() => dispatch(clearData())}>
-          {" "}
-          <i  className="fas fa-power-off nav-icons "></i>{" "}
+          <i  className="fas fa-power-off nav-icons "></i>
         </button>
       ) : null}
     </nav>
@@ -87,7 +86,7 @@ export const NavBar = () => {
 };
 
 export const NavBar2 = () => {
-  const state = useSelector((state) => state.userData);
+  // const state = useSelector((state) => state.userData);
   const dispatch = useDispatch();
 
   return (

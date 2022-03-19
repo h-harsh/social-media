@@ -193,27 +193,27 @@ export const commentPostFromFeed = createAsyncThunk(
   }
 );
 
-const userDetails = {
-  userName: null,
-  fullname: null,
-  email: null,
-  bio: null,
-  dob: null,
-  gender: null,
-  profilePic: null,
-};
+// const userDetails = {
+//   userName: null,
+//   fullname: null,
+//   email: null,
+//   bio: null,
+//   dob: null,
+//   gender: null,
+//   profilePic: null,
+// };
 
-const authUserInitialState = {
-  token: null,
-  loginStatus: "loggedOut",
-  signup: "idle",
-  userDetails: userDetails,
-  followers: null,
-  following: null,
-  notifications: null,
-  feed: null,
-  posts: null,
-};
+// const authUserInitialState = {
+//   token: null,
+//   loginStatus: "loggedOut",
+//   signup: "idle",
+//   userDetails: userDetails,
+//   followers: null,
+//   following: null,
+//   notifications: null,
+//   feed: null,
+//   posts: null,
+// };
 
 const authSlice = createSlice({
   name: "auth",

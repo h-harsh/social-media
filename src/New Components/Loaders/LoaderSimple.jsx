@@ -1,6 +1,6 @@
 import './loaders.css'
 
-import { Spin } from "antd";
+// import { Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 
 const LoaderSimple = ({size, color}) => {

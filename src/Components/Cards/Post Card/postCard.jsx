@@ -1,6 +1,6 @@
 import "./postCard.css";
 import { useState } from "react";
-import { useDispatch, useSelector, useStore } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { deletePost, likePost } from "../../../features/Posts/postsSlice";
 import { commentPost } from "../../../features/Posts/postsSlice";
 import {
@@ -9,7 +9,6 @@ import {
 } from "../../../features/Auth User/authUserSlice";
 import { Avatar, Button } from "antd";
 import {
-  ShareAltOutlined,
   CommentOutlined,
   LikeOutlined,
   LikeFilled,
@@ -24,7 +23,7 @@ export const PostCard = ({ post, feed, self }) => {
   const [showCommentsBox, setShowCommentsBox] = useState(false);
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.userData.currentUser);
-  const hello = `${baseurl}/${post.image}`;
+
 
   return (
     <div className="post-card only-card">

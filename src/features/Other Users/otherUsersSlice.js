@@ -1,3 +1,4 @@
+/*eslint-disable */
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { baseurl } from "../../utils/baseurl";
 import axios from 'axios'
