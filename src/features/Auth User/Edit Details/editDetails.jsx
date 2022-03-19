@@ -53,14 +53,15 @@ const defaultProfilePicture = (
 )
 const uploadedProfilePicture = <img  src={displayFile} alt="Error" />
   return (
-    <div className="acc-mang-outer">
-      <h1>Edit Account Details</h1>
+    <div className="acc-mang-outer ">
+      {/* <h1>Edit Account Details</h1> */}
       <div>
-        <div>
-          <div className="pic">
+        <div className="prof-cont" >
+          <div className="pic new-pic">
             {user.profilePicture ? (displayFile ? (uploadedProfilePicture) : (profilePicture)): defaultProfilePicture }
           </div>
           <input
+          className="img-upload-btn"
             type="file"
             name="profile-image"
             id="profile-file"
@@ -132,6 +133,8 @@ const uploadedProfilePicture = <img  src={displayFile} alt="Error" />
       </div>
       <Button
         size="large"
+        type="primary"
+        shape="round"
         onClick={() => {
           dispatch(userEdit(updatedDetail));
           onFormSubmit();

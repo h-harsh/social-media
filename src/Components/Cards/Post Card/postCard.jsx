@@ -25,7 +25,7 @@ export const PostCard = ({ post, feed, self  }) => {
   const currentUser = useSelector((state) => state.userData.currentUser);
 
   return (
-    <div className="post-card">
+    <div className="post-card only-card">
       <div className="post-author-details">
         <div className="post-author-details-inner">
           <div>

@@ -1,12 +1,22 @@
 .sideBar-comp{
     list-style: none;
     padding-left: 1.3rem;
+    
 }
 .sideBar-comp li{
-    font-size: 1.5rem;
-    font-weight: 600;
+    font-size: 1.4rem;
+    font-weight: 400;
     padding: 0.4rem 0;
 }
 .sideBar-comp a {
-    color: black !important;
+    color: var(--textColor) !important;
+}
+.sideBar-comp a:focus {
+    color: var(--primaryColor) !important;
+    background-color: white;
+}
+
+.side-bar-icon{
+    box-sizing: content-box;
+    padding-right: 0.5rem;
 }

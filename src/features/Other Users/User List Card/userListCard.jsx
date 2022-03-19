@@ -30,7 +30,7 @@ export const UserListCardSmall = ({ user }) => {
 
   return (
     <>
-      <div className="user-card-box user-card-box-small">
+      <div className="user-card-box user-card-box-small only-card">
         <div className="flex-cont">
           {user.profilePicture ? (
             <Avatar size={60} src={`${baseurl}/${user.profilePicture}`} />

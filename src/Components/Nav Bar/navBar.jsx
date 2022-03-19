@@ -1,55 +1,79 @@
-import './navBar.css'
+import "./navBar.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { clearData } from "../../features/Auth User/authUserSlice";
 import { useEffect, useState } from "react";
-import {Button} from 'antd'
-
+import { Button } from "antd";
 
 export const NavBar = () => {
   const token = useSelector((state) => state.userData.token);
   const dispatch = useDispatch();
-const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if(!token){
-      navigate('/login')
+    if (!token) {
+      navigate("/login");
     }
-  }, [token, navigate])
+  }, [token, navigate]);
 
   return (
     // <>
-      <nav className="navi-bar">
-          <div className="navi-bar-logo ">
-              Fine-socials
-          </div>
-          {/* {
-              token ? (
-                <div className="navi-bar-search-bar">.</div>
-              ):(null)
-          } */}
-          {
-              token ? (
-                <ul className="navi-bar-loggedin-menu">
-                <li><Link to="/"> <i class="fas fa-home"></i> </Link></li>
-                <li><Link to="/timeline"> <i class="fas fa-tasks"></i> </Link></li>
-                <li><Link to="/allUsers"> <i class="fas fa-users"></i> </Link></li>
-                <li><Link to="/notifications"> <i class="fas fa-bell"></i> </Link></li>
-                <li><Link to="/accountDetails"> <i class="fas fa-user-circle"></i> </Link></li>
-                </ul>
-              ) : (
-                <ul className="navi-bar-loggedout-menu">
-                    <li><Button size='large'><Link to="/login"> Login </Link>  </Button></li>  
-                    <li><Button size="large"><Link to="/signup"> Signup </Link></Button></li>
-                </ul>
-              )
-          }
-          {
-              token ? (
-                <button className="logout" onClick={() => dispatch(clearData())}> <i class="fas fa-power-off"></i> </button>
-              ): null
-          }
-      </nav>
+    <nav className="navi-bar">
+      <div className="navi-bar-logo book-store ">Fine-socials</div>
+      {token ? (
+        <ul className="navi-bar-loggedin-menu">
+          <li className="icons-outer-cont" >
+            <Link className="nav-icon-cont" to="/">
+              {" "}
+              <i  className="fas fa-home nav-icons "></i>{" "}
+            </Link>
+          </li>
+          <li className="icons-outer-cont" >
+            <Link className="nav-icon-cont" to="/timeline">
+              {" "}
+              <i  className="fas fa-tasks nav-icons "></i>{" "}
+            </Link>
+          </li>
+          <li className="icons-outer-cont" >
+            <Link className="nav-icon-cont" to="/allUsers">
+              {" "}
+              <i  className="fas fa-users nav-icons "></i>{" "}
+            </Link>
+          </li>
+          <li className="icons-outer-cont" >
+            <Link className="nav-icon-cont" to="/notifications">
+              {" "}
+              <i  className="fas fa-bell nav-icons "></i>{" "}
+            </Link>
+          </li>
+          <li className="icons-outer-cont" >
+            <Link className="nav-icon-cont" to="/accountDetails">
+              {" "}
+              <i  className="fas fa-user-circle nav-icons "></i>{" "}
+            </Link>
+          </li>
+        </ul>
+      ) : (
+        <ul className="navi-bar-loggedout-menu">
+          <li>
+            <Link to="/login">
+              <Button size="large" type="primary" shape="round">Login</Button>
+            </Link>
+          </li>
+          <li>
+          <Link to="/signup">
+              <Button size="large" type="secondary" shape="round">Sign Up</Button>
+            </Link>
+          </li>
+        </ul>
+      )}
+      {token ? (
+        <button  className="logout nav-icon-cont" onClick={() => dispatch(clearData())}>
+          {" "}
+          <i  className="fas fa-power-off nav-icons "></i>{" "}
+        </button>
+      ) : null}
+    </nav>
     // </>
   );
 };

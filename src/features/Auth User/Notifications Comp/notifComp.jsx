@@ -12,7 +12,7 @@ export const NotificationComp = () => {
     <Button size="large" onClick={() => dispatch(clearNotif("clear"))}>Clear all</Button>
       {state.currentUser.notifications.map((item) => {
         return (
-          <div className="notification-box">
+          <div className="notification-box only-card">
             <p>{item}</p>
           </div>
         );
