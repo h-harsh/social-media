@@ -77,6 +77,8 @@
 }
 .book-store-tagline{
   font-size: 1.1rem;
+  font-style: italic;
+  color: var(--secondaryColor);
 }
 @media screen and (max-width: 500px) {
     .login-image-container{
@@ -86,4 +88,9 @@
         width: 100%;
     }
     
+  }
+
+  .lgpagelogo-cont{
+    width: 13rem;
+    margin: 0 auto;
   }

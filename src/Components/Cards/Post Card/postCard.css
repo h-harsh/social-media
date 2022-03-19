@@ -5,6 +5,23 @@
     border-radius: 10px;
     /* box-shadow: ; */
 }
+.post-content-img{
+    /* object-fit: cover; */
+    background-color: white;
+    /* width: 35rem; */
+    text-align: center;
+    /* min-height: 17rem; */
+
+}
+.post-content p {
+    padding: 0.8rem;
+}
+.post-content-img img{
+    max-width: 35rem;
+    max-height: 25rem;
+    width: 100%;
+    object-fit: cover;
+}
 @media screen and (max-width: 600px){
     .post-card{
         width: 24rem;
@@ -42,14 +59,7 @@
 }
 
 /* post contect */
-.post-content p {
-    padding: 0.8rem;
-}
-.post-content-img img{
-    max-width: 35rem;
-    max-height: 25rem;
-    width: 100%;
-}
+
 
 /* post interaction details of likes and comments */
 .post-interaction-details{

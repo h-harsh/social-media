@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { clearData } from "../../features/Auth User/authUserSlice";
 import { useEffect, useState } from "react";
 import { Button } from "antd";
+import logo from '../../logo.png'
+import logoSmall from '../../logo-small.png'
 
 export const NavBar = () => {
   const token = useSelector((state) => state.userData.token);
@@ -19,7 +21,13 @@ export const NavBar = () => {
   return (
     // <>
     <nav className="navi-bar">
-      <div className="navi-bar-logo book-store ">Fine-socials</div>
+      {/* <div className="book-store">Fine-socials</div> */}
+      <div className=" nblogo-cont" >
+        <img className="nblogo-img" src={logo} alt="" />
+      </div>
+      <div className=" nblogo-cont-mob" >
+        <img className="nblogo-img" src={logoSmall} alt="" />
+      </div>
       {token ? (
         <ul className="navi-bar-loggedin-menu">
           <li className="icons-outer-cont" >
@@ -57,14 +65,14 @@ export const NavBar = () => {
         <ul className="navi-bar-loggedout-menu">
           <li>
             <Link to="/login">
-              <Button size="large" type="primary" shape="round">Login</Button>
+              <Button size="large" type="secondary" shape="round">Login</Button>
             </Link>
           </li>
-          <li>
+          {/* <li>
           <Link to="/signup">
               <Button size="large" type="secondary" shape="round">Sign Up</Button>
             </Link>
-          </li>
+          </li> */}
         </ul>
       )}
       {token ? (

@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Button } from "antd";
 import { userLogin, userSignup } from "../../features/Auth User/authUserSlice";
+import logo from '../../logo.png'
 
 const SignUpBox = () => {
   const loginHandler = () => null;
@@ -72,7 +73,10 @@ const SignUpBox = () => {
       </div>
 
       <div className="login-data-container">
-        <h1 className="book-store">Fine-Socials</h1>
+        {/* <h1 className="book-store">Fine-Socials</h1> */}
+        <div className=" lgpagelogo-cont" >
+        <img className="nblogo-img" src={logo} alt="" />
+        </div>
         <h3 className="book-store-tagline">Be where the world is going</h3>
         <div className="login-data-sub-box">
           <div className="each-data-cont">

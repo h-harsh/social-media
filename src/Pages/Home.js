@@ -5,7 +5,7 @@ import { FeedComp } from "../features/Auth User/Feed Component/feedComp"
 export const Home = () => {
   const token = useSelector(state => state.userData.token)
   const navigate = useNavigate()
-console.log(token)
+
   return (
     token ? (
       <div className="to-center" >

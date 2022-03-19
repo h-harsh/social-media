@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { Button } from "antd";
 import { useDispatch } from "react-redux";
 import { userLogin } from "../../features/Auth User/authUserSlice";
+import logo from '../../logo.png'
 
 
 const LoginBox = () => {
@@ -19,7 +20,11 @@ const LoginBox = () => {
       </div>
 
       <div className="login-data-container">
-        <h1 className="book-store">Fine-Socials</h1>
+        {/* <h1 className="book-store">Fine-Socials</h1> */}
+        <div className=" lgpagelogo-cont" >
+        <img className="nblogo-img" src={logo} alt="" />
+      </div>
+
         <h3 className="book-store-tagline" >Be where, the world is going</h3>
         <div className="login-data-sub-box">
           <div className="each-data-cont">

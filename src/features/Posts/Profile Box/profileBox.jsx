@@ -6,6 +6,7 @@ import { loadOtherUser } from "../postsSlice";
 import { Avatar } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import { baseurl } from "../../../utils/baseurl";
+import { LoaderSimple } from "../../../New Components";
 
 export const ProfileBox = ({ userId }) => {
   const state = useSelector((state) => state.userData);
@@ -61,7 +62,9 @@ export const ProfileBox = ({ userId }) => {
           </div>
         </div>
       ) : (
-        <h2>Loadingsss</h2>
+        <div className="loader-box">
+          <LoaderSimple size={50} />
+        </div>
       )}
     </div>
   );

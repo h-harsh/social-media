@@ -17,12 +17,14 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 import { baseurl } from "../../../utils/baseurl";
+import { LoaderSimple } from "../../../New Components";
 
-export const PostCard = ({ post, feed, self  }) => {
+export const PostCard = ({ post, feed, self }) => {
   const [comment, setComment] = useState("");
   const [showCommentsBox, setShowCommentsBox] = useState(false);
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.userData.currentUser);
+  const hello = `${baseurl}/${post.image}`;
 
   return (
     <div className="post-card only-card">
@@ -52,7 +54,8 @@ export const PostCard = ({ post, feed, self  }) => {
       <div className="post-content">
         <p>{post.text}</p>
         <div className="post-content-img">
-          <img src={`${baseurl}/${post.image}`} alt="" />
+          {/* <img loading="eager" src={`${baseurl}/${post.image}`} alt="" /> */}
+          <PicLoad postImage={post.image} />
         </div>
       </div>
 
@@ -149,5 +152,26 @@ export const PostCard = ({ post, feed, self  }) => {
         </div>
       ) : null}
     </div>
+  );
+};
+
+const PicLoad = ({ postImage }) => {
+  const [timer, setTimer] = useState(false);
+
+  return (
+    <>
+      <img
+        onLoad={() => setTimer(true)}
+        loading="eager"
+        src={`${baseurl}/${postImage}`}
+        alt=""
+      />
+
+      {timer ? null : (
+        <div className="both-axis-center">
+          <LoaderSimple size={40} />
+        </div>
+      )}
+    </>
   );
 };

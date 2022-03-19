@@ -13,7 +13,7 @@
 }
 .sideBar-comp a:focus {
     color: var(--primaryColor) !important;
-    background-color: white;
+    /* background-color: white; */
 }
 
 .side-bar-icon{
